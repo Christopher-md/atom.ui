@@ -2,7 +2,7 @@
 
 > Vite - Next Generation Frontend Tooling
 
-### Scaffolding Your First Vite Project
+## Scaffolding Your First Vite Project
 
 ### With npm:
 ```bash
