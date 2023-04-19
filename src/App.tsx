@@ -27,6 +27,8 @@ function App() {
                 </p>
             </div>
             <p className={styles['read-the-docs']}>
+                App is running in {import.meta.env.MODE} mode
+                <br/>
                 Click on the Vite and React logos to learn more
             </p>
         </div>
