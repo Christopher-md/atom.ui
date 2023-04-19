@@ -1,11 +1,13 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
 import classNames from 'classnames';
+import {DateTime as Luxon} from 'luxon';
 import viteLogo from '/vite.svg';
-import reactLogo from '@/assets/react.svg'
+import reactLogo from '@/assets/react.svg';
+import DateTime from '@/components/DateTime/DateTime'
 import styles from './App.module.sass';
 
 function App() {
-    const [count, setCount] = useState(0)
+    const [count, setCount] = useState<number>(0);
 
     return (
         <div className={styles.App}>
@@ -26,6 +28,10 @@ function App() {
                     Edit <code>src/App.tsx</code> and save to test HMR
                 </p>
             </div>
+            <DateTime
+                locale='en'
+                format={Luxon.DATETIME_MED_WITH_SECONDS}
+            />
             <p className={styles['read-the-docs']}>
                 App is running in {import.meta.env.MODE} mode
                 <br/>

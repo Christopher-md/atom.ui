@@ -1320,6 +1320,11 @@
   resolved "https://jart.corp.prisbank.com:443/artifactory/api/npm/psb/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
+"@types/luxon@^3.3.0":
+  version "3.3.0"
+  resolved "https://jart.corp.prisbank.com:443/artifactory/api/npm/psb/@types/luxon/-/luxon-3.3.0.tgz#a61043a62c0a72696c73a0a305c544c96501e006"
+  integrity sha1-phBDpiwKcmlsc6CjBcVEyWUB4AY=
+
 "@types/node@^18.15.6":
   version "18.15.11"
   resolved "https://jart.corp.prisbank.com:443/artifactory/api/npm/psb/@types/node/-/node-18.15.11.tgz#b3b790f09cb1696cffcec605de025b088fa4225f"
@@ -2876,6 +2881,11 @@ lru-cache@^6.0.0:
   integrity sha1-bW/mVw69lqr5D8rR2vo7JWbbOpQ=
   dependencies:
     yallist "^4.0.0"
+
+luxon@^3.3.0:
+  version "3.3.0"
+  resolved "https://jart.corp.prisbank.com:443/artifactory/api/npm/psb/luxon/-/luxon-3.3.0.tgz#d73ab5b5d2b49a461c47cedbc7e73309b4805b48"
+  integrity sha1-1zq1tdK0mkYcR87bx+czCbSAW0g=
 
 magic-string@^0.27.0:
   version "0.27.0"
