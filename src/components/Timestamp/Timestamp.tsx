@@ -2,16 +2,14 @@
  * Created by chaikovskiy on 19.04.2023
  */
 import React, {useEffect, useState} from 'react';
+import classNames from 'classnames';
+import Typography from '@/components/UI/Typography';
 import getCurrentDateTime from '@/utils/getCurrentDateTime';
-import styles from './DateTime.module.sass';
+import type {Props} from './Timestamp.types';
+import styles from './Timestamp.module.sass';
 
-interface Props {
-    locale?: string
-    format?: Intl.DateTimeFormatOptions
-}
-
-const DateTime: React.FC<Props> = (props) => {
-    const {format, locale} = props;
+const Timestamp: React.FC<Props> = (props) => {
+    const {format, locale, className} = props;
 
     const [time, setTime] = useState<string>(getCurrentDateTime({
         locale: locale,
@@ -34,10 +32,16 @@ const DateTime: React.FC<Props> = (props) => {
     }, [format, locale]);
 
     return (
-        <span className={styles['date-and-time']}>
+        <Typography
+            as='span'
+            className={classNames(
+                styles.timestamp,
+                className
+            )}
+        >
             {time}
-        </span>
+        </Typography>
     );
 };
 
-export default DateTime;
+export default Timestamp;
