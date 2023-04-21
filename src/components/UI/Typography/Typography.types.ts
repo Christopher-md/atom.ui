@@ -1,15 +1,12 @@
-import React, {ComponentProps, ComponentType} from 'react';
+import React, { ComponentProps, ComponentType } from "react";
 
-interface Elements {
-    span: React.HTMLAttributes<HTMLSpanElement>
-    h1: React.HTMLAttributes<HTMLHeadingElement>
-    h2: React.HTMLAttributes<HTMLHeadingElement>
-    h3: React.HTMLAttributes<HTMLHeadingElement>
-    h4: React.HTMLAttributes<HTMLHeadingElement>
-    h5: React.HTMLAttributes<HTMLHeadingElement>
-    h6: React.HTMLAttributes<HTMLHeadingElement>
-    p: React.HTMLAttributes<HTMLParagraphElement>
-}
+type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
+
+type Elements =
+    { [K in `h${HeadingLevel}`]: React.HTMLAttributes<HTMLHeadingElement>; } & {
+        span: React.HTMLAttributes<HTMLSpanElement>;
+        p: React.HTMLAttributes<HTMLParagraphElement>;
+    };
 
 type Keys = keyof Elements;
 
@@ -31,5 +28,5 @@ export type {
     Props,
     Elements,
     ElementType,
-    TypographyOwnProps
+    TypographyOwnProps,
 };

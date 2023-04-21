@@ -4,6 +4,4 @@ interface Props {
     format?: Intl.DateTimeFormatOptions
 }
 
-export type {
-    Props
-};
+export default Props;

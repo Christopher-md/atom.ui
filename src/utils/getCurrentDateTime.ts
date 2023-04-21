@@ -1,4 +1,4 @@
-import {DateTime} from 'luxon';
+import { DateTime } from "luxon";
 
 interface Options {
     locale: string
@@ -6,11 +6,11 @@ interface Options {
 }
 
 function getCurrentTime(options: Partial<Options> = {}) {
-    const {format = DateTime.DATETIME_MED, locale} = options;
+    const { format = DateTime.DATETIME_MED, locale } = options;
 
     const now = DateTime.now();
 
-    return now.toLocaleString(format, {locale: locale});
+    return now.toLocaleString(format, { locale });
 }
 
 export default getCurrentTime;

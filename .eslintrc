@@ -1,21 +1,103 @@
 {
   "root": true,
-  "parser": "@typescript-eslint/parser",
   "extends": [
-    "react-app",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
+    "airbnb",
+    "airbnb/hooks",
+    "airbnb-typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": "latest",
+    "project": "./tsconfig.json"
+  },
   "rules": {
-    "semi": ["error", "always"],
-    "@typescript-eslint/no-explicit-any": "off",
+    "react/jsx-no-bind": "off",
+    "react/button-has-type": "off",
+    "no-restricted-exports": "off",
+    "react/jsx-indent": [
+      "error",
+      4
+    ],
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-indent-props": [
+      "error",
+      4
+    ],
+    "@typescript-eslint/indent": [
+      "error",
+      4
+    ],
+    "react/jsx-one-expression-per-line": "off",
+    "react/function-component-definition": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      {
+        "functions": false
+      }
+    ],
     "@typescript-eslint/quotes": [
       "error",
-      "single",
+      "double",
       {
-        "allowTemplateLiterals": true,
-        "avoidEscape": true
+        "allowTemplateLiterals": true
+      }
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectPattern": {
+          "multiline": true,
+          "consistent": true,
+          "minProperties": 5
+        },
+        "ObjectExpression": {
+          "multiline": true,
+          "consistent": true,
+          "minProperties": 3
+        },
+        "ImportDeclaration": {
+          "multiline": true,
+          "consistent": true,
+          "minProperties": 3
+        },
+        "ExportDeclaration": {
+          "multiline": true,
+          "consistent": true,
+          "minProperties": 3
+        }
       }
     ]
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
+    },
+    "import/resolver": {
+      "alias": {
+        "map": [
+          [
+            "@",
+            "./src"
+          ]
+        ],
+        "extensions": [
+          ".ts",
+          ".tsx",
+          ".json"
+        ]
+      }
+    }
   }
 }
