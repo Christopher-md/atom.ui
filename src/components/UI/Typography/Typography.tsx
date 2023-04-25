@@ -9,12 +9,14 @@ import styles from "./Typography.module.sass";
 const defaultElement = "span";
 
 function Typography<E extends ElementType = typeof defaultElement>(props: Props<E>) {
-    const { children, as: Component = defaultElement, className, ...rest } = props;
+    const { children, as: Component = defaultElement, className, size = "", color = "", ...rest } = props;
 
     return (
         <Component
             className={classNames(
                 styles.typography,
+                styles[color],
+                styles[size],
                 className,
             )}
             {...rest}

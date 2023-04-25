@@ -2,6 +2,10 @@ import React, { ComponentProps, ComponentType } from "react";
 
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
+type Size = "small" | "medium" | "large" | "inherit";
+
+type Color = "primary" | "secondary" | "red";
+
 type Elements =
     { [K in `h${HeadingLevel}`]: React.HTMLAttributes<HTMLHeadingElement>; } & {
         span: React.HTMLAttributes<HTMLSpanElement>;
@@ -16,6 +20,8 @@ type ElementType<P = any> =
 
 interface TypographyOwnProps<E extends ElementType = ElementType> {
     as?: E;
+    size?: Size;
+    color?: Color;
     children: React.ReactNode;
 }
 

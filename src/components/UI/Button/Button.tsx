@@ -3,6 +3,7 @@
  */
 import React from "react";
 import classNames from "classnames";
+import Typography from "@/components/UI/Typography";
 import type Props from "./Button.types";
 import styles from "./Button.module.sass";
 
@@ -18,7 +19,9 @@ const Button: React.FC<Props> = (props) => {
             )}
             {...rest}
         >
-            {children}
+            <Typography size="inherit">
+                {children}
+            </Typography>
         </button>
     );
 };
