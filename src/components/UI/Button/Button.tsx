@@ -19,7 +19,7 @@ const Button: React.FC<Props> = (props) => {
             )}
             {...rest}
         >
-            <Typography size="inherit">
+            <Typography color="secondary" size="inherit">
                 {children}
             </Typography>
         </button>

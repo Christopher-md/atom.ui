@@ -1,0 +1,117 @@
+@import "@/styles/sass/colors"
+
+$theme: var(--bg-tertiary)
+$text: var(--text-secondary)
+$disabled: rgba(0, 0, 0, .10)
+
+=placeholder()
+  opacity: 0
+  transition: opacity .2s
+
+=placeholderVisible()
+  opacity: .42
+
+.input
+  width: 200px
+  overflow: hidden
+  position: relative
+  display: inline-block
+
+.container
+  background-color: $theme
+  border-radius: 8px
+
+  &.error
+    border: 1px solid $lightest-red
+
+.inputRoot
+  border: 0
+  z-index: 2
+  width: 100%
+  color: $text
+  font-size: 14px
+  position: relative
+  padding: 27px 12px 10px
+  background-color: transparent
+  font-family: Calibri, sans-serif
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active
+    + label
+      z-index: 2
+
+  &::placeholder
+    +placeholder
+
+  &::-webkit-input-placeholder
+    +placeholder
+
+  &::-moz-placeholder
+    +placeholder
+
+  &::-ms-input-placeholder
+    +placeholder
+
+  &:focus
+    outline: 0
+
+    &::placeholder
+      +placeholder
+
+    &::-webkit-input-placeholder
+      +placeholderVisible
+
+    &::-moz-placeholder
+      +placeholderVisible
+
+    &::-ms-input-placeholder
+      +placeholderVisible
+
+    + label
+      font-size: 12px
+      transform: translate(10px, 5px)
+
+  &:disabled
+    cursor: not-allowed
+    background: $disabled
+
+.label
+  top: 0
+  left: 0
+  z-index: 1
+  color: $text
+  display: block
+  font-size: 14px
+  overflow: hidden
+  position: absolute
+  white-space: nowrap
+  text-overflow: ellipsis
+  max-width: calc(100% - 24px)
+  transform: translate(12px, 19px)
+  transition: transform .2s cubic-bezier(0, 0, .2, 1), font-size 0.2s cubic-bezier(0, 0, .2, 1)
+
+  &.error
+    color: $lightest-red
+
+  &.filled
+    font-size: 12px
+    transform: translate(10px, 5px)
+
+span
+  align-items: center
+
+  &.error
+    font-size: 12px
+    margin-top: 3px
+    margin-left: 8px
+
+.fullWidth
+  width: 100%
+
+@keyframes opacity
+  0%
+    opacity: 0
+  100%
+    opacity: 1

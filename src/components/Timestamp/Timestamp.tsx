@@ -34,6 +34,7 @@ const Timestamp: React.FC<Props> = (props) => {
     return (
         <Typography
             as="span"
+            color="primary"
             className={classNames(
                 styles.timestamp,
                 className,
