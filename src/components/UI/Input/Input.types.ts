@@ -1,9 +1,14 @@
 import React from "react";
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+interface InputOwnProps {
     label: string;
     fullWidth?: boolean;
     error?: boolean | string;
 }
 
-export default Props;
+type Props = React.InputHTMLAttributes<HTMLInputElement> & InputOwnProps;
+
+export type {
+    Props,
+    InputOwnProps,
+};

@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import classNames from "classnames";
 import InputBase from "@/components/UI/InputBase";
 import Typography from "@/components/UI/Typography";
-import type Props from "./Input.types";
+import type { Props } from "./Input.types";
 import styles from "./Input.module.sass";
 
 const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {

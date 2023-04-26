@@ -2,12 +2,22 @@ import React, { useState } from "react";
 import { DateTime as Luxon } from "luxon";
 import Input from "@/components/UI/Input";
 import Counter from "@/components/Counter";
+import Number from "@/components/UI/Number";
 import Timestamp from "@/components/Timestamp";
 import Typography from "@/components/UI/Typography";
 import styles from "./App.module.sass";
 
 function App() {
-    const [input, setInput] = useState("Hello, world!");
+    const [input, setInput] = useState({
+        fullName: "Hello, world!",
+        phone: "",
+    });
+
+    const onHandleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+        const { name, value } = e.target;
+
+        setInput((prev) => ({ ...prev, [name]: value }));
+    };
 
     return (
         <div className={styles.app}>
@@ -15,17 +25,25 @@ function App() {
             <div className={styles["input-container"]}>
                 <Input
                     label="ФИО"
-                    value={input}
+                    name="fullName"
+                    value={input.fullName}
+                    onChange={onHandleChange}
                     placeholder="Чайковский К.А."
-                    onChange={(e) => setInput(e.target.value)}
                 />
                 <Typography
                     color="secondary"
                     className={styles["input-container__text"]}
                 >
-                    {input}
+                    {input.fullName}
                 </Typography>
             </div>
+            <Number
+                name="phone"
+                value={input.phone}
+                placeholder="77*****"
+                label="Номер телефона"
+                onChange={onHandleChange}
+            />
             <Timestamp
                 locale="en"
                 className={styles.timestamp}
