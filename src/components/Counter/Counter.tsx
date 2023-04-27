@@ -1,27 +1,29 @@
 /**
  * Created by chaikovskiy on 25.04.2023
  */
-import React from "react";
-import { shallow } from "zustand/shallow";
-import useCounter from "@/store/useCounter";
+import React, { useState } from "react";
+import classNames from "classnames";
 import Button from "@/components/UI/Button";
 import Typography from "@/components/UI/Typography";
+import type Props from "./Counter.types";
 import styles from "./Counter.module.sass";
 
-const Counter: React.FC = () => {
-    const { count, increment, decrement } = useCounter(
-        (state) => ({
-            count: state.count,
-            increment: state.increment,
-            decrement: state.decrement,
-        }),
-        shallow,
-    );
+const Counter: React.FC<Props> = (props) => {
+    const { className, ...rest } = props;
+
+    const [count, setCount] = useState(0);
+
+    const increment = () => setCount((prev) => prev + 1);
+
+    const decrement = () => setCount((prev) => prev - 1);
 
     return (
-        <div>
+        <div className={classNames(styles.counter, className)} {...rest}>
             <Button onClick={decrement}>-</Button>
-            <Typography className={styles.count}>
+            <Typography
+                color="primary"
+                className={styles.count}
+            >
                 {count}
             </Typography>
             <Button onClick={increment}>+</Button>

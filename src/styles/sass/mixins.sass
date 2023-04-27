@@ -1,0 +1,32 @@
+@import "themes"
+
+=keyframes($name)
+  @-webkit-keyframes #{$name}
+    @content
+  @-moz-keyframes #{$name}
+    @content
+  @-ms-keyframes #{$name}
+    @content
+  @keyframes #{$name}
+    @content
+
+=breakpointUp($deviceMin)
+  @media (min-width: $deviceMin)
+    @content
+
+=breakpointDown($deviceMax)
+  @media (max-width: $deviceMax)
+    @content
+
+=breakpointBetween($deviceMin, $deviceMax)
+  @media (max-width: $deviceMax) and (min-width: $deviceMin)
+    @content
+
+=breakpointOnly($device)
+  +breakpointBetween($device, $device)
+
+=styles($mode)
+  @each $key, $map in $themes
+    @each $prop, $color in $map
+      @if $prop == $mode
+        --#{$key}: #{$color}
