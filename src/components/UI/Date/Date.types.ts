@@ -3,9 +3,11 @@ import { NumberFormatValues } from "react-number-format";
 import { InputOwnProps } from "@/components/UI/Input/Input.types";
 import { DateBaseOptions } from "@/components/UI/DateBase/DateBase.types";
 
-type InputProps = InputOwnProps<string, NumberFormatValues>;
+type InputProps = InputOwnProps & {
+    onChange?: (event: NumberFormatValues) => void
+};
 
-type DateOwnProps = Partial<DateBaseOptions> & InputProps;
+type DateOwnProps = { options?: Partial<DateBaseOptions> } & InputProps;
 
 type Props =
     DateOwnProps &

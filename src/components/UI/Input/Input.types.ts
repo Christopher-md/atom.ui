@@ -1,34 +1,33 @@
 import React, { ChangeEvent, RefAttributes } from "react";
 
-type InputType = <
-    T extends string,
-    E = ChangeEvent<HTMLInputElement>,
->(
-    props: Props<T, E> & RefAttributes<HTMLInputElement>
-) => JSX.Element;
+type InputOptions = { component?: React.ComponentType<any> } & Record<string, any>;
 
-interface InputOptions {
-    component?: React.ComponentType<any>;
+type InputNativeProps<E> = {
+    onChange?: (event: E) => void;
+};
 
-    // All other props
-    [x: string]: any
-}
-
-interface InputOwnProps<T, E> {
-    value: T;
+interface InputOwnProps {
     label: string;
     fullWidth?: boolean;
     options?: InputOptions;
     error?: boolean | string;
-    onChange: (event: E) => void;
 }
 
-type Props<T, E> =
-    InputOwnProps<T, E> &
-    Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof InputOwnProps<T, E>>;
+type Props<E> =
+    InputOwnProps &
+    InputNativeProps<E> &
+    Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof InputNativeProps<E>> &
+    Record<string, any>;
+
+type InputType = <
+    E = ChangeEvent<HTMLInputElement>,
+>(
+    props: Props<E> & RefAttributes<HTMLInputElement>
+) => JSX.Element;
 
 export type {
     Props,
     InputType,
     InputOwnProps,
+    InputNativeProps,
 };

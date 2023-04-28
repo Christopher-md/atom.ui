@@ -1,10 +1,10 @@
-import React, { ChangeEvent } from "react";
+import { NumberFormatProps } from "react-number-format";
 import { InputOwnProps } from "@/components/UI/Input/Input.types";
 
-type NumberOwnProps = InputOwnProps<string, ChangeEvent<HTMLInputElement>>;
+type NumberOwnProps = NumberFormatProps & InputOwnProps & {
+    value: string | number | ReadonlyArray<string> | undefined
+};
 
-type Props =
-    NumberOwnProps &
-    Omit<React.InputHTMLAttributes<HTMLInputElement>, keyof NumberOwnProps>;
+type Props = NumberOwnProps;
 
 export default Props;

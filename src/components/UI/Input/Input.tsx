@@ -1,15 +1,13 @@
 import React, { ChangeEvent, forwardRef } from "react";
 import classNames from "classnames";
-import InputBase from "@/components/UI/InputBase";
 import Typography from "@/components/UI/Typography";
 import type { InputType, Props } from "./Input.types";
 import styles from "./Input.module.sass";
 
 function Input<
-    T extends string,
     E = ChangeEvent<HTMLInputElement>,
 >(
-    props: Props<T, E>,
+    props: Props<E>,
     ref: React.Ref<HTMLInputElement>,
 ) {
     const {
@@ -23,7 +21,13 @@ function Input<
         ...rest
     } = props;
 
-    const { component, ...restOptions } = options;
+    const { component: Component = "input" } = options;
+
+    function onHandleChange(event: ChangeEvent<HTMLInputElement>) {
+        if (!onChange) return;
+
+        onChange(event as E);
+    }
 
     return (
         <div
@@ -34,15 +38,11 @@ function Input<
             )}
         >
             <div className={classNames(styles.container, { [styles.error]: error })}>
-                <InputBase
+                <Component
                     ref={ref}
                     value={value}
-                    onChange={onChange}
+                    onChange={onHandleChange}
                     className={styles.inputRoot}
-                    options={{
-                        component: component,
-                        ...restOptions,
-                    }}
                     {...rest}
                 />
                 <label

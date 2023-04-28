@@ -4,16 +4,17 @@ import Input from "@/components/UI/Input";
 import type Props from "./Date.types";
 
 const Date: FC<Props> = (props) => {
-    const { value, hyphen, yearMin, yearMax, onChange, ...rest } = props;
+    const { value, onChange, options = {}, ...rest } = props;
+    const { hyphen, yearMin, yearMax } = options;
 
     return (
         <Input
             value={value}
+            hyphen={hyphen}
+            yearMin={yearMin}
+            yearMax={yearMax}
             onChange={onChange}
             options={{
-                hyphen: hyphen,
-                yearMin: yearMin,
-                yearMax: yearMax,
                 component: DateBase,
             }}
             {...rest}
