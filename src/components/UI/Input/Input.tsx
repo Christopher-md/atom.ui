@@ -1,12 +1,29 @@
-import React, { forwardRef } from "react";
+import React, { ChangeEvent, forwardRef } from "react";
 import classNames from "classnames";
 import InputBase from "@/components/UI/InputBase";
 import Typography from "@/components/UI/Typography";
-import type { Props } from "./Input.types";
+import type { InputType, Props } from "./Input.types";
 import styles from "./Input.module.sass";
 
-const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
-    const { label, error, fullWidth = false, className, value, ...rest } = props;
+function Input<
+    T extends string,
+    E = ChangeEvent<HTMLInputElement>,
+>(
+    props: Props<T, E>,
+    ref: React.Ref<HTMLInputElement>,
+) {
+    const {
+        label,
+        error,
+        value,
+        onChange,
+        className,
+        fullWidth = false,
+        options = {},
+        ...rest
+    } = props;
+
+    const { component, ...restOptions } = options;
 
     return (
         <div
@@ -20,22 +37,24 @@ const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
                 <InputBase
                     ref={ref}
                     value={value}
-                    autoComplete="on"
+                    onChange={onChange}
                     className={styles.inputRoot}
+                    options={{
+                        component: component,
+                        ...restOptions,
+                    }}
                     {...rest}
                 />
-                {(label != null) && (
-                    <label
-                        title={label}
-                        htmlFor="input"
-                        className={classNames(styles.label, {
-                            [styles.error]: error,
-                            [styles.filled]: value,
-                        })}
-                    >
-                        {label}
-                    </label>
-                )}
+                <label
+                    title={label}
+                    htmlFor="input"
+                    className={classNames(styles.label, {
+                        [styles.error]: error,
+                        [styles.filled]: value,
+                    })}
+                >
+                    {label}
+                </label>
             </div>
             {typeof error === "string" && (
                 <Typography color="red" className={styles.error}>
@@ -44,6 +63,6 @@ const Input = forwardRef<HTMLInputElement, Props>((props, ref) => {
             )}
         </div>
     );
-});
+}
 
-export default Input;
+export default forwardRef(Input) as InputType;

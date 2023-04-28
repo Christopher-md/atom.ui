@@ -1,16 +1,21 @@
-import React from "react";
+import React, { forwardRef, Ref } from "react";
 import type Props from "./InputBase.types";
+import type { InputBaseType } from "./InputBase.types";
 
-const InputBase = React.forwardRef<HTMLInputElement, Props>((props, ref) => {
-    const { type = "text", ...rest } = props;
+function InputBase<T extends string, E>(props: Props<T, E>, ref: Ref<HTMLInputElement>) {
+    const { type = "text", onChange, options = {}, value, ...rest } = props;
+    const { component: Component = "input", ...restOptions } = options;
 
     return (
-        <input
+        <Component
             ref={ref}
             type={type}
+            value={value}
+            onChange={(event) => onChange(event as E)}
+            {...restOptions}
             {...rest}
         />
     );
-});
+}
 
-export default InputBase;
+export default forwardRef(InputBase) as InputBaseType;

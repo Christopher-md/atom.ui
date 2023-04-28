@@ -14,8 +14,10 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "object-shorthand": "off",
     "react/prop-types": "off",
     "consistent-return": "off",
+    "no-param-reassign": "off",
     "react/jsx-no-bind": "off",
     "react/button-has-type": "off",
     "no-restricted-exports": "off",
