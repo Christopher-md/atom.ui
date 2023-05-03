@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import classNames from "classnames";
 import Typography from "@/components/UI/Typography";
-import type { Props } from "./Input.types";
+import type { Props } from "./types";
 import styles from "./Input.module.sass";
 
 function Input(

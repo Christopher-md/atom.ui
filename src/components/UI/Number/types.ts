@@ -1,5 +1,5 @@
 import { NumberFormatProps } from "react-number-format";
-import { InputOwnProps } from "@/components/UI/Input/Input.types";
+import { InputOwnProps } from "@/components/UI/Input/types";
 
 type NumberOwnProps = NumberFormatProps & InputOwnProps;
 

@@ -1,5 +1,4 @@
 import isLeapYear from "@/utils/isLeapYear";
-import { parseDigits } from "@/utils/parseDigits";
 
 type Options = {
     hyphen: string;
@@ -30,10 +29,7 @@ function limit(value: string, max: string, min = "01", length = 2): string {
     }
 
     if (value.length === length) {
-        if (Number(value) === 0) {
-            value = min;
-        } else if (value > max) {
-            // this can happen when user paste number
+        if (value > max) {
             value = max;
         } else if (value < min) {
             value = min;
@@ -44,29 +40,32 @@ function limit(value: string, max: string, min = "01", length = 2): string {
 }
 
 const maxDayOfMonth = (month: string, year: string, yearMin: string): string => {
-    if (month.length === 2 && year.length === (yearMin.length || 4)) {
-        const yearInt = parseInt(year, 10);
+    if (!(month.length === 2 && year.length === (yearMin.length || 4))) return "31";
 
-        if (
-            parseInt(year, 10) > parseInt(yearMin, 10)
-            && isLeapYear(yearInt)
-            && Number(month) === 2
-        ) {
-            return "29";
-        }
+    const yearInt = parseInt(year, 10);
+    const monthInt = parseInt(month, 10);
+    const yearMinInt = parseInt(yearMin, 10);
 
-        return monthLength[month as keyof typeof monthLength];
+    if (yearInt > yearMinInt && isLeapYear(yearInt) && monthInt === 2) {
+        return "29";
     }
 
-    return "31";
+    return monthLength[month as keyof typeof monthLength];
 };
 
 export const validDate = (string: string, { hyphen, yearMax, yearMin }: Options): string => {
-    const digits = parseDigits(string);
+    // get valid month
+    const month = limit(string.substring(2, 4), "12");
+    // get valid year
+    const year = limit(string.substring(4, 8), yearMax, yearMin, 4);
+    // get max days by current month
+    const maxDays = maxDayOfMonth(month, year, yearMin);
+    // get valid date
+    const date = limit(string.substring(0, 2), maxDays);
 
-    const month = limit(digits.substring(2, 4), "12");
-    const year = limit(digits.substring(4, 8), yearMax, yearMin, 4);
-    const date = limit(digits.substring(0, 2), maxDayOfMonth(month, year, yearMin));
-
-    return date + concatHyphenBefore(month, hyphen) + concatHyphenBefore(year, hyphen);
+    return (
+        date
+        + concatHyphenBefore(month, hyphen)
+        + concatHyphenBefore(year, hyphen)
+    );
 };

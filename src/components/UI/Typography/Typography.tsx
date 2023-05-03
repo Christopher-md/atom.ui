@@ -3,7 +3,7 @@
  */
 import React from "react";
 import classNames from "classnames";
-import type { ElementType, Props } from "./Typography.types";
+import type { ElementType, Props } from "./types";
 import styles from "./Typography.module.sass";
 
 const defaultElement = "span";

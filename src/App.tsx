@@ -12,9 +12,9 @@ import styles from "./App.module.sass";
 
 function App() {
     const [input, setInput] = useState({
-        fullName: "Hello, world!",
-        phone: "",
-        date: "",
+        date: "29.07.2000",
+        phone: "77712345",
+        fullName: "Чайковский К.А.",
     });
     const ref = useRef() as MutableRefObject<HTMLInputElement>;
 
@@ -41,11 +41,13 @@ function App() {
                     placeholder="Чайковский К.А."
                 />
                 <Number
+                    mask="_"
                     name="phone"
                     value={input.phone}
-                    placeholder="77*****"
                     label="Номер телефона"
                     onChange={onHandleChange}
+                    format="+373 (###) #####"
+                    placeholder="+373 (###) #####"
                 />
                 <Date
                     name="date"
