@@ -15,7 +15,7 @@ const Date: FC<Props> = (props) => {
             yearMax={yearMax}
             onChange={onChange}
             options={{
-                component: DateBase,
+                input: DateBase,
             }}
             {...rest}
         />

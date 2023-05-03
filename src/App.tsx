@@ -48,15 +48,11 @@ function App() {
                     onChange={onHandleChange}
                 />
                 <Date
+                    name="date"
                     label="Дата"
                     value={input.date}
                     className={styles.date}
-                    onChange={(event) => {
-                        setInput((prev) => ({
-                            ...prev,
-                            date: event.value,
-                        }));
-                    }}
+                    onChange={onHandleChange}
                 />
             </div>
             <Timestamp

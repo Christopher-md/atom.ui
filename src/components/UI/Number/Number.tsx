@@ -12,7 +12,7 @@ const Number: FC<Props> = (props) => {
             value={value}
             onChange={onChange}
             options={{
-                component: NumberBase,
+                input: NumberBase,
             }}
             {...rest}
         />

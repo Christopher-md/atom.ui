@@ -1,33 +1,16 @@
-import React, { ChangeEvent, forwardRef } from "react";
+import React, { forwardRef } from "react";
 import classNames from "classnames";
 import Typography from "@/components/UI/Typography";
-import type { InputType, Props } from "./Input.types";
+import type { Props } from "./Input.types";
 import styles from "./Input.module.sass";
 
-function Input<
-    E = ChangeEvent<HTMLInputElement>,
->(
-    props: Props<E>,
+function Input(
+    props: Props,
     ref: React.Ref<HTMLInputElement>,
 ) {
-    const {
-        label,
-        error,
-        value,
-        onChange,
-        className,
-        fullWidth = false,
-        options = {},
-        ...rest
-    } = props;
+    const { label, error, value, className, fullWidth = false, options = {}, ...rest } = props;
 
-    const { component: Component = "input" } = options;
-
-    function onHandleChange(event: ChangeEvent<HTMLInputElement>) {
-        if (!onChange) return;
-
-        onChange(event as E);
-    }
+    const { input: Component = "input" } = options;
 
     return (
         <div
@@ -41,7 +24,6 @@ function Input<
                 <Component
                     ref={ref}
                     value={value}
-                    onChange={onHandleChange}
                     className={styles.inputRoot}
                     {...rest}
                 />
@@ -65,4 +47,4 @@ function Input<
     );
 }
 
-export default forwardRef(Input) as InputType;
+export default forwardRef(Input);
