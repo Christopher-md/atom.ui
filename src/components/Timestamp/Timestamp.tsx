@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import Typography from "@/components/UI/Typography";
 import getCurrentDateTime from "@/utils/getCurrentDateTime";
-import type Props from "./Timestamp.types";
+import type Props from "./types";
 import styles from "./Timestamp.module.sass";
 
 const Timestamp: React.FC<Props> = (props) => {

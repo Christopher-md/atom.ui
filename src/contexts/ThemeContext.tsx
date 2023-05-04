@@ -23,8 +23,9 @@ export const useThemeContext = (): IContext => {
     throw new Error("Context must be used within Provider!");
 };
 
+const isDark = window.matchMedia(darkTheme).matches;
+
 export const ThemeContext: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const isDark = window.matchMedia(darkTheme).matches;
     const [theme, setTheme] = useState(isDark ? Themes.dark : Themes.light);
 
     // layoutEffect to add the required class before the page is displayed

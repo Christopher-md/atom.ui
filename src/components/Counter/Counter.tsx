@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import classNames from "classnames";
 import Button from "@/components/UI/Button";
 import Typography from "@/components/UI/Typography";
-import type Props from "./Counter.types";
+import type Props from "./types";
 import styles from "./Counter.module.sass";
 
 const Counter: React.FC<Props> = (props) => {

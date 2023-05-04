@@ -1,0 +1,53 @@
+$color: var(--text-secondary)
+$background: var(--bg-tertiary)
+$placement: "top" bottom, "bottom" top, "left" right, "right" left
+
+@mixin generate_placement
+  @each $position, $reverse in $placement
+    .popper[data-popper-placement^=#{$position}] > .arrow
+      #{$reverse}: -4px
+
+.wrapper
+  display: inline-block
+
+  .tooltip
+    border: 0
+    cursor: pointer
+    display: inline-block
+    background-color: transparent
+
+.popper
+  z-index: 999
+  color: $color
+  font-size: 13px
+  max-width: 250px
+  padding: 5px 10px
+  border-radius: 4px
+  display: inline-block
+  background-color: $background
+
+.arrow
+  visibility: hidden
+
+  &::before
+    width: 8px
+    height: 8px
+    content: ""
+    position: absolute
+    visibility: visible
+    background: inherit
+    transform: rotate(45deg)
+    background-color: $background
+
++generate_placement
+
+.animation-entering
+  opacity: 1
+  transition: opacity 500ms
+
+.animation-entered
+  opacity: 1
+
+.animation-exiting
+  opacity: 0
+  transition: opacity 500ms

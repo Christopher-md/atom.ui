@@ -1,19 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { DateTime as Luxon } from "luxon";
 import Input from "@/components/UI/Input";
 import Counter from "@/components/Counter";
+import Button from "@/components/UI/Button";
 import Number from "@/components/UI/Number";
+import Date from "@/components/UI/Date/Date";
+import Tooltip from "@/components/UI/Tooltip";
 import Timestamp from "@/components/Timestamp";
 import Typography from "@/components/UI/Typography";
 import styles from "./App.module.sass";
 
+const lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, expedita";
+
 function App() {
     const [input, setInput] = useState({
-        fullName: "Hello, world!",
-        phone: "",
+        phone: undefined,
+        date: "29.07.2000",
+        fullName: "Чайковский К.А.",
     });
+    const ref = useRef<HTMLInputElement>(null);
 
-    const onHandleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    useEffect(() => {
+        if (!ref.current) return;
+
+        ref.current.focus();
+    }, []);
+
+    const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
 
         setInput((prev) => ({ ...prev, [name]: value }));
@@ -21,29 +34,35 @@ function App() {
 
     return (
         <div className={styles.app}>
-            <Counter />
-            <div className={styles["input-container"]}>
+            <div className={styles.fields}>
                 <Input
+                    ref={ref}
                     label="ФИО"
                     name="fullName"
                     value={input.fullName}
                     onChange={onHandleChange}
                     placeholder="Чайковский К.А."
                 />
-                <Typography
-                    color="secondary"
-                    className={styles["input-container__text"]}
-                >
-                    {input.fullName}
-                </Typography>
+                <Number
+                    name="phone"
+                    value={input.phone}
+                    label="Номер телефона"
+                    onChange={onHandleChange}
+                    format="+373 (###) #####"
+                    placeholder="+373 (###) #####"
+                />
+                <Date
+                    name="date"
+                    label="Дата"
+                    value={input.date}
+                    className={styles.date}
+                    onChange={onHandleChange}
+                />
             </div>
-            <Number
-                name="phone"
-                value={input.phone}
-                placeholder="77*****"
-                label="Номер телефона"
-                onChange={onHandleChange}
-            />
+            <Counter className={styles.counter} />
+            <Tooltip text={lorem}>
+                <Button>Hover me</Button>
+            </Tooltip>
             <Timestamp
                 locale="en"
                 className={styles.timestamp}
@@ -51,8 +70,6 @@ function App() {
             />
             <Typography color="secondary">
                 App is running in {import.meta.env.MODE} mode
-                <br />
-                Click on the Vite and React logos to learn more
             </Typography>
         </div>
     );
