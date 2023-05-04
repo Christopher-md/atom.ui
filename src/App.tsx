@@ -12,21 +12,21 @@ import styles from "./App.module.sass";
 
 function App() {
     const [input, setInput] = useState({
+        phone: undefined,
         date: "29.07.2000",
-        phone: "77712345",
         fullName: "Чайковский К.А.",
     });
     const ref = useRef() as MutableRefObject<HTMLInputElement>;
+
+    useEffect(() => {
+        ref.current.focus();
+    }, []);
 
     const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
 
         setInput((prev) => ({ ...prev, [name]: value }));
     };
-
-    useEffect(() => {
-        ref.current.focus();
-    }, []);
 
     return (
         <div className={styles.app}>
@@ -41,7 +41,6 @@ function App() {
                     placeholder="Чайковский К.А."
                 />
                 <Number
-                    mask="_"
                     name="phone"
                     value={input.phone}
                     label="Номер телефона"
@@ -64,8 +63,6 @@ function App() {
             />
             <Typography color="secondary">
                 App is running in {import.meta.env.MODE} mode
-                <br />
-                Click on the Vite and React logos to learn more
             </Typography>
         </div>
     );

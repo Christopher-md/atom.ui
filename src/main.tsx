@@ -4,8 +4,12 @@ import { ThemeContext } from "@/contexts/ThemeContext";
 import App from "./App";
 import "./index.sass";
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+const container = document.getElementById("root") as HTMLElement;
+
+const element = (
     <ThemeContext>
         <App />
-    </ThemeContext>,
+    </ThemeContext>
 );
+
+ReactDOM.createRoot(container).render(element);

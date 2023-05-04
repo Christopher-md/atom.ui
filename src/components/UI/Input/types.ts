@@ -1,6 +1,8 @@
 import React, { InputHTMLAttributes } from "react";
 
-type InputOptions = { input?: React.ComponentType<any> };
+type InputOptions = {
+    input?: React.ComponentType<any>
+};
 
 interface InputOwnProps {
     label: string;
