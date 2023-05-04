@@ -1,16 +1,15 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, Ref } from "react";
 import classNames from "classnames";
 import Typography from "@/components/UI/Typography";
-import type { Props } from "./types";
+import type { InputAttributes, InputType, Props } from "./types";
 import styles from "./Input.module.sass";
 
-function Input(
-    props: Props,
-    ref: React.Ref<HTMLInputElement>,
+function Input<Type = InputAttributes>(
+    props: Props<Type>,
+    ref: Ref<HTMLInputElement>,
 ) {
-    const { label, error, value, className, fullWidth = false, options = {}, ...rest } = props;
-
-    const { input: Component = "input" } = options;
+    const { label, error, value, className, fullWidth, as = "input", ...rest } = props;
+    const Component = as;
 
     return (
         <div
@@ -25,7 +24,7 @@ function Input(
                     ref={ref}
                     value={value}
                     className={styles.inputRoot}
-                    {...rest}
+                    {...rest as Type}
                 />
                 <label
                     title={label}
@@ -47,4 +46,4 @@ function Input(
     );
 }
 
-export default forwardRef(Input);
+export default forwardRef(Input) as InputType;

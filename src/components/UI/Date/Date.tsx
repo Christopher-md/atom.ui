@@ -9,14 +9,12 @@ const Date: FC<Props> = (props) => {
 
     return (
         <Input
+            as={DateBase}
             value={value}
             hyphen={hyphen}
             yearMin={yearMin}
             yearMax={yearMax}
             onChange={onChange}
-            options={{
-                input: DateBase,
-            }}
             {...rest}
         />
     );

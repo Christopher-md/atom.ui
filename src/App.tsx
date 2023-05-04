@@ -1,6 +1,4 @@
-import React, {
-    MutableRefObject, useEffect, useRef, useState,
-} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { DateTime as Luxon } from "luxon";
 import Input from "@/components/UI/Input";
 import Counter from "@/components/Counter";
@@ -16,9 +14,11 @@ function App() {
         date: "29.07.2000",
         fullName: "Чайковский К.А.",
     });
-    const ref = useRef() as MutableRefObject<HTMLInputElement>;
+    const ref = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
+        if (!ref.current) return;
+
         ref.current.focus();
     }, []);
 

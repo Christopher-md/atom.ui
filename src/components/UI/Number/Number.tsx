@@ -10,10 +10,8 @@ const Number: FC<Props> = (props) => {
         <Input
             label={label}
             value={value}
+            as={NumberBase}
             onChange={onChange}
-            options={{
-                input: NumberBase,
-            }}
             {...rest}
         />
     );
