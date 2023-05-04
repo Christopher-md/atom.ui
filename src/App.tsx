@@ -2,11 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import { DateTime as Luxon } from "luxon";
 import Input from "@/components/UI/Input";
 import Counter from "@/components/Counter";
+import Button from "@/components/UI/Button";
 import Number from "@/components/UI/Number";
+import Date from "@/components/UI/Date/Date";
+import Tooltip from "@/components/UI/Tooltip";
 import Timestamp from "@/components/Timestamp";
 import Typography from "@/components/UI/Typography";
-import Date from "@/components/UI/Date/Date";
 import styles from "./App.module.sass";
+
+const lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, expedita";
 
 function App() {
     const [input, setInput] = useState({
@@ -30,7 +34,6 @@ function App() {
 
     return (
         <div className={styles.app}>
-            <Counter />
             <div className={styles.fields}>
                 <Input
                     ref={ref}
@@ -56,6 +59,10 @@ function App() {
                     onChange={onHandleChange}
                 />
             </div>
+            <Counter className={styles.counter} />
+            <Tooltip text={lorem}>
+                <Button>Hover me</Button>
+            </Tooltip>
             <Timestamp
                 locale="en"
                 className={styles.timestamp}

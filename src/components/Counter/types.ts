@@ -1,5 +1,5 @@
-import React from "react";
+import type { HTMLAttributes } from "react";
 
-type Props = React.HTMLAttributes<HTMLDivElement>;
+type Props = HTMLAttributes<HTMLDivElement>;
 
 export default Props;
