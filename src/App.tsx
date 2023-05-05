@@ -4,6 +4,7 @@ import Input from "@/components/UI/Input";
 import Counter from "@/components/Counter";
 import Button from "@/components/UI/Button";
 import Number from "@/components/UI/Number";
+import Switch from "@/components/UI/Switch";
 import Date from "@/components/UI/Date/Date";
 import Tooltip from "@/components/UI/Tooltip";
 import Timestamp from "@/components/Timestamp";
@@ -13,6 +14,7 @@ import styles from "./App.module.sass";
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, expedita";
 
 function App() {
+    const [checked, setChecked] = useState(false);
     const [input, setInput] = useState({
         phone: undefined,
         date: "29.07.2000",
@@ -63,6 +65,13 @@ function App() {
             <Tooltip text={lorem}>
                 <Button>Hover me</Button>
             </Tooltip>
+            <Switch
+                checked={checked}
+                className={styles.switch}
+                onChange={(event) => {
+                    setChecked(event.target.checked);
+                }}
+            />
             <Timestamp
                 locale="en"
                 className={styles.timestamp}
