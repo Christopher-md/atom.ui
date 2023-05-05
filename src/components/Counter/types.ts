@@ -1,5 +1,7 @@
-import type { HTMLAttributes } from "react";
-
-type Props = HTMLAttributes<HTMLDivElement>;
+interface Props {
+    count: number
+    className?: string
+    onChange: (number: number) => void
+}
 
 export default Props;
