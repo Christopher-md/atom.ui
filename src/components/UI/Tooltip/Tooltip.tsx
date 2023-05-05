@@ -9,7 +9,7 @@ import styles from "./Tooltip.module.sass";
 const timeout = { appear: 0, exit: 500, enter: 500 };
 
 const Tooltip: React.FC<Props> = (props) => {
-    const { text, children } = props;
+    const { text, children, className } = props;
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [popper, setPopper] = useState<HTMLDivElement | null>(null);
@@ -24,11 +24,11 @@ const Tooltip: React.FC<Props> = (props) => {
     const handleMouseLeave = () => setIsOpen(false);
 
     return (
-        <>
+        <div className={classNames(styles["tooltip-wrapper"], className)}>
             <div
                 ref={setTooltip}
-                className={styles.tooltip}
                 aria-describedby="tooltip"
+                className={styles.tooltip}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
@@ -64,7 +64,7 @@ const Tooltip: React.FC<Props> = (props) => {
                 </Transition>,
                 document.body,
             )}
-        </>
+        </div>
     );
 };
 

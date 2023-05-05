@@ -14,6 +14,7 @@ import styles from "./App.module.sass";
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, expedita";
 
 function App() {
+    const [count, setCount] = useState(0);
     const [checked, setChecked] = useState(false);
     const [input, setInput] = useState({
         phone: undefined,
@@ -36,6 +37,14 @@ function App() {
 
     return (
         <div className={styles.app}>
+            <Typography color="secondary">
+                App is running in {import.meta.env.MODE} mode
+            </Typography>
+            <Timestamp
+                locale="en"
+                className={styles.timestamp}
+                format={Luxon.DATETIME_MED_WITH_SECONDS}
+            />
             <div className={styles.fields}>
                 <Input
                     ref={ref}
@@ -57,12 +66,18 @@ function App() {
                     name="date"
                     label="Дата"
                     value={input.date}
-                    className={styles.date}
                     onChange={onHandleChange}
                 />
             </div>
-            <Counter className={styles.counter} />
-            <Tooltip text={lorem}>
+            <Counter
+                count={count}
+                className={styles.counter}
+                onChange={(number) => setCount(number)}
+            />
+            <Tooltip
+                text={lorem}
+                className={styles.tooltip}
+            >
                 <Button>Hover me</Button>
             </Tooltip>
             <Switch
@@ -72,14 +87,6 @@ function App() {
                     setChecked(event.target.checked);
                 }}
             />
-            <Timestamp
-                locale="en"
-                className={styles.timestamp}
-                format={Luxon.DATETIME_MED_WITH_SECONDS}
-            />
-            <Typography color="secondary">
-                App is running in {import.meta.env.MODE} mode
-            </Typography>
         </div>
     );
 }

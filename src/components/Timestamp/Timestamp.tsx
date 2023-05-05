@@ -1,6 +1,3 @@
-/**
- * Created by chaikovskiy on 19.04.2023
- */
 import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import Typography from "@/components/UI/Typography";
@@ -8,6 +5,9 @@ import getCurrentDateTime from "@/utils/getCurrentDateTime";
 import type Props from "./types";
 import styles from "./Timestamp.module.sass";
 
+/**
+ * Created by chaikovskiy on 19.04.2023
+ */
 const Timestamp: React.FC<Props> = (props) => {
     const { format, locale, className } = props;
 
@@ -34,7 +34,7 @@ const Timestamp: React.FC<Props> = (props) => {
     return (
         <Typography
             as="span"
-            color="primary"
+            color="red"
             className={classNames(
                 styles.timestamp,
                 className,
