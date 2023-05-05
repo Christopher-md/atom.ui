@@ -7,14 +7,11 @@ $placement: "top" bottom, "bottom" top, "left" right, "right" left
     .popper[data-popper-placement^=#{$position}] > .arrow
       #{$reverse}: -4px
 
-.wrapper
+.tooltip
+  border: 0
+  cursor: pointer
   display: inline-block
-
-  .tooltip
-    border: 0
-    cursor: pointer
-    display: inline-block
-    background-color: transparent
+  background-color: transparent
 
 .popper
   z-index: 999
@@ -22,6 +19,7 @@ $placement: "top" bottom, "bottom" top, "left" right, "right" left
   font-size: 13px
   max-width: 250px
   padding: 5px 10px
+  text-align: center
   border-radius: 4px
   display: inline-block
   background-color: $background
