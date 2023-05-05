@@ -15,7 +15,7 @@ const lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumen
 
 function App() {
     const [count, setCount] = useState(0);
-    const [checked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(true);
     const [input, setInput] = useState({
         phone: undefined,
         date: "29.07.2000",

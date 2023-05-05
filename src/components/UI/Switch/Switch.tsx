@@ -7,7 +7,7 @@ import styles from "./Switch.module.sass";
  * Created by chaikovskiy on 05.05.2023
  */
 const Switch: React.FC<Props> = (props) => {
-    const { checked, className, ...rest } = props;
+    const { checked, className, disabled, ...rest } = props;
 
     return (
         <div
@@ -22,6 +22,7 @@ const Switch: React.FC<Props> = (props) => {
                 name="switch"
                 type="checkbox"
                 checked={checked}
+                disabled={disabled}
                 className={styles["switch-checkbox"]}
                 {...rest}
             />
