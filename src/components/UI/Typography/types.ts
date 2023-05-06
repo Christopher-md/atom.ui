@@ -23,6 +23,7 @@ interface TypographyOwnProps<E extends ElementType = ElementType> {
     size?: Size;
     color?: Color;
     children: React.ReactNode;
+    disableSelection?: boolean;
 }
 
 type Props<E extends ElementType> =

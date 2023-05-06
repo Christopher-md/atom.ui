@@ -1,0 +1,51 @@
+@import "@/styles/sass/colors"
+
+$label-placement: "top" column-reverse, "bottom" column, "left" row-reverse, "right" row
+
+@mixin placement
+  @each $placement, $direction in $label-placement
+    .label-placement-#{$placement}
+      flex-direction: $direction
+
+.radio
+  display: inline-block
+
+.label
+  cursor: pointer
+  align-items: center
+  display: inline-flex
+
+.label-text
+  margin: 0 6px
+
+.input-wrapper
+  position: relative
+
+.input-radio
+  opacity: 0
+  width: 100%
+  height: 100%
+  cursor: inherit
+  position: absolute
+
+  &:checked + .dot:before
+    top: 50%
+    left: 50%
+    content: ""
+    width: 12px
+    height: 12px
+    position: absolute
+    border-radius: 50%
+    transform: translate(-50%, -50%)
+    background-color: $color--emerald
+
+.dot
+  width: 20px
+  height: 20px
+  flex-shrink: 0
+  display: block
+  position: relative
+  border-radius: 50%
+  border: 2px solid var(--bg-tertiary)
+
+@include placement
