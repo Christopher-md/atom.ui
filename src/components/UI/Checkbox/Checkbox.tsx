@@ -2,12 +2,12 @@ import React, { useId } from "react";
 import classNames from "classnames";
 import Typography from "@/components/UI/Typography";
 import type Props from "./types";
-import styles from "./Radio.module.sass";
+import styles from "./Checkbox.module.sass";
 
 /**
  * Created by chaikovskiy on 06.05.2023
  */
-const Radio: React.FC<Props> = (props) => {
+const Checkbox: React.FC<Props> = (props) => {
     const { label, checked, disabled, className, labelPlacement = "right", ...rest } = props;
     const id = useId(); // Generating a unique id
 
@@ -16,7 +16,7 @@ const Radio: React.FC<Props> = (props) => {
     return (
         <div
             className={classNames(
-                styles.radio,
+                styles.checkbox,
                 { [styles.disabled]: disabled },
                 className,
             )}
@@ -31,10 +31,10 @@ const Radio: React.FC<Props> = (props) => {
                 <div className={styles["input-wrapper"]}>
                     <input
                         id={id}
-                        type="radio"
+                        type="checkbox"
                         checked={checked}
                         disabled={disabled}
-                        className={styles["input-radio"]}
+                        className={styles["input-checkbox"]}
                         {...rest}
                     />
                     <span className={styles.marker} />
@@ -50,4 +50,4 @@ const Radio: React.FC<Props> = (props) => {
     );
 };
 
-export default Radio;
+export default Checkbox;

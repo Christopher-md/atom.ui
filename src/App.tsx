@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { DateTime as Luxon } from "luxon";
 import Input from "@/components/UI/Input";
+import Radio from "@/components/UI/Radio";
 import Counter from "@/components/Counter";
 import Button from "@/components/UI/Button";
 import Number from "@/components/UI/Number";
@@ -8,8 +9,8 @@ import Switch from "@/components/UI/Switch";
 import Date from "@/components/UI/Date/Date";
 import Tooltip from "@/components/UI/Tooltip";
 import Timestamp from "@/components/Timestamp";
+import Checkbox from "@/components/UI/Checkbox";
 import Typography from "@/components/UI/Typography";
-import Radio from "@/components/UI/Radio";
 import styles from "./App.module.sass";
 
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, expedita";
@@ -22,6 +23,10 @@ function App() {
         phone: undefined,
         date: "29.07.2000",
         fullName: "Чайковский К.А.",
+    });
+    const [cars, setCars] = useState({
+        bmw: true,
+        mercedes: false,
     });
     const ref = useRef<HTMLInputElement>(null);
 
@@ -68,6 +73,7 @@ function App() {
                     name="date"
                     label="Дата"
                     value={input.date}
+                    placeholder="дд.мм.гггг"
                     onChange={onHandleChange}
                 />
             </div>
@@ -103,6 +109,28 @@ function App() {
                     value="Female"
                     onChange={onHandleChange}
                     checked={input.gender === "Female"}
+                />
+            </div>
+            <div>
+                <Checkbox
+                    label="Bmw"
+                    checked={cars.bmw}
+                    onChange={({ target }) => {
+                        setCars((prev) => ({
+                            ...prev,
+                            bmw: target.checked,
+                        }));
+                    }}
+                />
+                <Checkbox
+                    label="Mercedes"
+                    checked={cars.mercedes}
+                    onChange={({ target }) => {
+                        setCars((prev) => ({
+                            ...prev,
+                            mercedes: target.checked,
+                        }));
+                    }}
                 />
             </div>
         </div>
