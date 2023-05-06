@@ -25,8 +25,8 @@ function App() {
         fullName: "Чайковский К.А.",
     });
     const [cars, setCars] = useState({
-        bmw: true,
         mercedes: false,
+        volkswagen: true,
     });
     const ref = useRef<HTMLInputElement>(null);
 
@@ -113,12 +113,12 @@ function App() {
             </div>
             <div>
                 <Checkbox
-                    label="Bmw"
-                    checked={cars.bmw}
+                    label="Volkswagen"
+                    checked={cars.volkswagen}
                     onChange={({ target }) => {
                         setCars((prev) => ({
                             ...prev,
-                            bmw: target.checked,
+                            volkswagen: target.checked,
                         }));
                     }}
                 />
