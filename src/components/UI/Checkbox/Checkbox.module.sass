@@ -1,0 +1,63 @@
+@import "@/styles/sass/colors"
+
+$label-placement: "top" column-reverse, "bottom" column, "left" row-reverse, "right" row
+
+@mixin placement
+  @each $placement, $direction in $label-placement
+    .label-placement-#{$placement}
+      flex-direction: $direction
+
+.checkbox, .label
+  vertical-align: middle
+
+.checkbox
+  display: inline-block
+
+  &.disabled
+    .label
+      cursor: not-allowed
+
+    .label-text
+      color: $light-grey
+
+.label
+  cursor: pointer
+  align-items: center
+  display: inline-flex
+
+.label-text
+  margin: 0 6px
+
+.input-wrapper
+  position: relative
+
+.input-checkbox
+  opacity: 0
+  width: 100%
+  height: 100%
+  cursor: inherit
+  position: absolute
+
+  &:checked + .marker:before
+    top: 50%
+    left: 50%
+    content: ""
+    width: 10px
+    height: 6px
+    margin-top: -1px
+    position: absolute
+    border-bottom-left-radius: 2px
+    border-left: 2px solid $color--emerald
+    border-bottom: 2px solid $color--emerald
+    transform: translate(-50%, -50%) rotate(-45deg)
+
+.marker
+  width: 20px
+  height: 20px
+  flex-shrink: 0
+  display: block
+  position: relative
+  border-radius: 4px
+  border: 2px solid var(--bg-tertiary)
+
+@include placement
