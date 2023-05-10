@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import DateBase from "@/components/UI/DateBase";
 import Input from "@/components/UI/Input";
+import DateBase from "@/components/UI/Date/DateBase";
 import type Props from "./types";
 
 const Date: FC<Props> = (props) => {
