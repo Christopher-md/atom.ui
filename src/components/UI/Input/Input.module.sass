@@ -1,4 +1,5 @@
 @import "@/styles/sass/colors"
+@import "@/styles/sass/mixins"
 
 $theme: var(--bg-tertiary)
 $text: var(--text-secondary)
@@ -91,6 +92,7 @@ $disabled: rgba(0, 0, 0, .10)
   max-width: calc(100% - 24px)
   transform: translate(12px, 19px)
   transition: transform .2s cubic-bezier(0, 0, .2, 1), font-size 0.2s cubic-bezier(0, 0, .2, 1)
+  +disable-text-selection
 
   &.error
     color: $lightest-red
