@@ -1,6 +1,6 @@
 import { NumberFormatProps } from "react-number-format";
 import { InputOwnProps } from "@/components/UI/Input/types";
-import { DateBaseOptions } from "@/components/UI/DateBase/types";
+import { DateBaseOptions } from "@/components/UI/Date/DateBase/types";
 
 type InputProps = InputOwnProps & NumberFormatProps;
 

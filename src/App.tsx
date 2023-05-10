@@ -10,6 +10,7 @@ import Date from "@/components/UI/Date/Date";
 import Tooltip from "@/components/UI/Tooltip";
 import Timestamp from "@/components/Timestamp";
 import Checkbox from "@/components/UI/Checkbox";
+import Password from "@/components/UI/Password";
 import Typography from "@/components/UI/Typography";
 import styles from "./App.module.sass";
 
@@ -22,6 +23,7 @@ function App() {
         gender: "Male",
         phone: undefined,
         date: "29.07.2000",
+        password: "qwerty",
         fullName: "Чайковский К.А.",
     });
     const [cars, setCars] = useState({
@@ -74,6 +76,12 @@ function App() {
                     label="Дата"
                     value={input.date}
                     placeholder="дд.мм.гггг"
+                    onChange={onHandleChange}
+                />
+                <Password
+                    label="Пароль"
+                    name="password"
+                    value={input.password}
                     onChange={onHandleChange}
                 />
             </div>
