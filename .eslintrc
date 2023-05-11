@@ -27,6 +27,7 @@
     ],
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
+    "@typescript-eslint/no-shadow": "off",
     "react/jsx-indent-props": [
       "error",
       4
