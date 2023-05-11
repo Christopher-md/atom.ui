@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DateTime as Luxon } from "luxon";
 import Input from "@/components/UI/Input";
 import Radio from "@/components/UI/Radio";
@@ -12,6 +12,7 @@ import Timestamp from "@/components/Timestamp";
 import Checkbox from "@/components/UI/Checkbox";
 import Password from "@/components/UI/Password";
 import Typography from "@/components/UI/Typography";
+import useClickOutside from "@/hooks/useClickOutside";
 import styles from "./App.module.sass";
 
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, expedita";
@@ -30,13 +31,16 @@ function App() {
         mercedes: false,
         volkswagen: true,
     });
-    const ref = useRef<HTMLInputElement>(null);
+
+    const ref = useClickOutside<HTMLInputElement>(() => {
+        console.log("Clicked outside!");
+    });
 
     useEffect(() => {
         if (!ref.current) return;
 
         ref.current.focus();
-    }, []);
+    }, [ref]);
 
     const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
