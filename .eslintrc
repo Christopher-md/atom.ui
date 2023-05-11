@@ -62,17 +62,17 @@
         "ObjectExpression": {
           "multiline": true,
           "consistent": true,
-          "minProperties": 4
+          "minProperties": 5
         },
         "ImportDeclaration": {
           "multiline": true,
           "consistent": true,
-          "minProperties": 4
+          "minProperties": 5
         },
         "ExportDeclaration": {
           "multiline": true,
           "consistent": true,
-          "minProperties": 4
+          "minProperties": 5
         }
       }
     ]
