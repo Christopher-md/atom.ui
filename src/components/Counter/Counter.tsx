@@ -9,14 +9,14 @@ import styles from "./Counter.module.sass";
  * Created by chaikovskiy on 25.04.2023
  */
 const Counter: React.FC<Props> = (props) => {
-    const { count, onChange, className, ...rest } = props;
+    const { count, onChange, className } = props;
 
     const increment = () => onChange(count + 1);
 
     const decrement = () => onChange(count - 1);
 
     return (
-        <div className={classNames(styles.counter, className)} {...rest}>
+        <div className={classNames(styles.counter, className)}>
             <Button onClick={decrement}>-</Button>
             <Typography
                 color="primary"

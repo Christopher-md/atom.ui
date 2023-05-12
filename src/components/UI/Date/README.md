@@ -1,30 +1,37 @@
-# Input
+# Date
 
-> UI `<Input />` component
+> UI `<Date />` component
 
 ## Usage
 
 ```tsx
-import Input from "@components/UI/Input";
+import React from "react";
+import Date from "@/components/UI/Date";
 
 const App = () => {
-    const [value, setValue] = useState("");
+    const [input, setInput] = useState("29.07.2000");
 
+    const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setInput(e.target.value);
+    };
+    
     return (
-        <Input
-            value={value}
-            label="Full name"
-            onChange={(e) => setValue(e.target.value)}
+        <Date
+            name="date"
+            label="Дата"
+            value={input}
+            placeholder="дд.мм.гггг"
+            onChange={onHandleChange}
         />
-    )
-};
+    );
+}
 
 export default App;
 ```
 
 ## Properties
 
-The input component extends all the input's own HTML attributes and several non-native ones:
+The date component extends all the input's own HTML attributes, NumberFormatProps form `react-number-format` library and several non-native ones:
 
 | Name      | Type                | Description                                                                                 |  
 |:----------|:--------------------|:--------------------------------------------------------------------------------------------|  

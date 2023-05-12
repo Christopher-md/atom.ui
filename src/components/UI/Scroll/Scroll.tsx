@@ -1,21 +1,15 @@
-import React, {
-    Children, FC, MutableRefObject, useEffect, useRef, useState,
-} from "react";
+import React, { Children, useEffect, useRef, useState } from "react";
 import classNames from "classnames";
+import type Props from "./types";
 import styles from "./Scroll.module.sass";
 
-type Props = {
-    children: React.ReactNode;
-    className?: string;
-};
-
-const Scroll: FC<Props> = (props) => {
+const Scroll: React.FC<Props> = (props) => {
     const { children, className, ...rest } = props;
     const [clientX, setClientX] = useState(0);
     const [scrollX, setScrollX] = useState(0);
     const [scrolling, setScrolling] = useState(false);
     const [isPressed, setIsPressed] = useState(false);
-    const container = useRef<HTMLDivElement>(null) as MutableRefObject<HTMLDivElement>;
+    const container = useRef<HTMLDivElement>(null) as React.MutableRefObject<HTMLDivElement>;
     const count = Children.toArray(children).length;
 
     useEffect(() => {
