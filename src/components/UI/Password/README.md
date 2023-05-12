@@ -1,30 +1,36 @@
-# Input
+# Password
 
-> UI `<Input />` component
+> UI `<Password />` component
 
 ## Usage
 
 ```tsx
-import Input from "@components/UI/Input";
+import React from "react";
+import Password from "@/components/UI/Password";
 
 const App = () => {
-    const [value, setValue] = useState("");
+    const [input, setInput] = useState("");
 
+    const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setInput(e.target.value);
+    };
+    
     return (
-        <Input
-            value={value}
-            label="Full name"
-            onChange={(e) => setValue(e.target.value)}
+        <Password
+            value={input}
+            name="password"
+            label="Password"
+            onChange={onHandleChange}
         />
-    )
-};
+    );
+}
 
 export default App;
 ```
 
 ## Properties
 
-The input component extends all the input's own HTML attributes and several non-native ones:
+The password component extends all the input's own HTML attributes, NumberFormatProps form `react-number-format` library and several non-native ones:
 
 | Name      | Type                | Description                                                                                 |  
 |:----------|:--------------------|:--------------------------------------------------------------------------------------------|  

@@ -1,4 +1,4 @@
-import React, { Ref, forwardRef, useState } from "react";
+import React, { Ref, forwardRef, useState, useId } from "react";
 import classNames from "classnames";
 import Typography from "@/components/UI/Typography";
 import type { InputAttributes, InputType, Props } from "./types";
@@ -10,6 +10,7 @@ function Input<Type = InputAttributes>(
 ) {
     const { label, error, value, className, fullWidth, as: Component = "input", ...rest } = props;
 
+    const id = useId();
     const [focused, setFocused] = useState(false);
 
     const onBlur = () => setFocused(false);
@@ -26,6 +27,7 @@ function Input<Type = InputAttributes>(
         >
             <div className={classNames(styles.container, { [styles.error]: error })}>
                 <Component
+                    id={id}
                     ref={ref}
                     value={value}
                     onBlur={onBlur}
@@ -34,8 +36,8 @@ function Input<Type = InputAttributes>(
                     {...rest as Type}
                 />
                 <label
+                    htmlFor={id}
                     title={label}
-                    htmlFor="input"
                     className={classNames(styles.label, {
                         [styles.error]: error,
                         [styles.filled]: value,

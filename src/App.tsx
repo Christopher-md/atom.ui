@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DateTime as Luxon } from "luxon";
 import Input from "@/components/UI/Input";
 import Radio from "@/components/UI/Radio";
@@ -12,6 +12,7 @@ import Timestamp from "@/components/Timestamp";
 import Checkbox from "@/components/UI/Checkbox";
 import Password from "@/components/UI/Password";
 import Typography from "@/components/UI/Typography";
+import useClickOutside from "@/hooks/useClickOutside";
 import styles from "./App.module.sass";
 
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, expedita";
@@ -30,18 +31,27 @@ function App() {
         mercedes: false,
         volkswagen: true,
     });
-    const ref = useRef<HTMLInputElement>(null);
+
+    const ref = useClickOutside<HTMLInputElement>(() => {
+        console.log("Clicked outside!");
+    });
 
     useEffect(() => {
         if (!ref.current) return;
 
         ref.current.focus();
-    }, []);
+    }, [ref]);
 
     const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
 
         setInput((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const onHandleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, checked } = e.target;
+
+        setCars((prev) => ({ ...prev, [name]: checked }));
     };
 
     return (
@@ -121,24 +131,16 @@ function App() {
             </div>
             <div>
                 <Checkbox
+                    name="volkswagen"
                     label="Volkswagen"
+                    onChange={onHandleCheck}
                     checked={cars.volkswagen}
-                    onChange={({ target }) => {
-                        setCars((prev) => ({
-                            ...prev,
-                            volkswagen: target.checked,
-                        }));
-                    }}
                 />
                 <Checkbox
+                    name="mercedes"
                     label="Mercedes"
                     checked={cars.mercedes}
-                    onChange={({ target }) => {
-                        setCars((prev) => ({
-                            ...prev,
-                            mercedes: target.checked,
-                        }));
-                    }}
+                    onChange={onHandleCheck}
                 />
             </div>
         </div>
