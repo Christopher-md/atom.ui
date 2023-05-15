@@ -39,7 +39,7 @@ function App() {
         ref.current.focus();
     }, [ref]);
 
-    useClickOutside<HTMLInputElement>(
+    useClickOutside(
         ref,
         () => {
             console.log("Clicked outside!");
