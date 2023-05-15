@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { DateTime as Luxon } from "luxon";
 import Input from "@/components/UI/Input";
 import Radio from "@/components/UI/Radio";
@@ -18,6 +18,7 @@ import styles from "./App.module.sass";
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, expedita";
 
 function App() {
+    const ref = useRef<HTMLInputElement>(null);
     const [count, setCount] = useState(0);
     const [checked, setChecked] = useState(true);
     const [input, setInput] = useState({
@@ -32,15 +33,18 @@ function App() {
         volkswagen: true,
     });
 
-    const ref = useClickOutside<HTMLInputElement>(() => {
-        console.log("Clicked outside!");
-    });
-
     useEffect(() => {
         if (!ref.current) return;
 
         ref.current.focus();
     }, [ref]);
+
+    useClickOutside(
+        ref,
+        () => {
+            console.log("Clicked outside!");
+        },
+    );
 
     const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
