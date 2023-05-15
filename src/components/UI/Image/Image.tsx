@@ -9,6 +9,8 @@ import styles from "./Image.module.sass";
 const Image: React.FC<Props> = (props) => {
     const { src, alt = "", width, height, className, ...rest } = props;
 
+    if (!src) return null;
+
     return (
         <img
             src={src}
