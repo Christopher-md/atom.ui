@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { DateTime as Luxon } from "luxon";
+import Date from "@/components/UI/Date";
 import Input from "@/components/UI/Input";
 import Radio from "@/components/UI/Radio";
 import Counter from "@/components/Counter";
 import Button from "@/components/UI/Button";
 import Number from "@/components/UI/Number";
 import Switch from "@/components/UI/Switch";
-import Date from "@/components/UI/Date/Date";
 import Tooltip from "@/components/UI/Tooltip";
 import Timestamp from "@/components/Timestamp";
 import Checkbox from "@/components/UI/Checkbox";
