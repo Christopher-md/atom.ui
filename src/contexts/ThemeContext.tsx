@@ -7,6 +7,8 @@ const Classes = {
     light: "light-mode",
 };
 
+type Callback = () => void;
+
 type IContext = Themes.dark | Themes.light;
 
 const initState = Themes.light;
@@ -25,7 +27,7 @@ const query = window.matchMedia(darkTheme);
 
 const getSnapshot = () => (query.matches ? Themes.dark : Themes.light);
 
-const callback = (callback: () => void) => {
+const callback = (callback: Callback) => {
     query.addEventListener("change", callback);
     return () => {
         query.removeEventListener("change", callback);
