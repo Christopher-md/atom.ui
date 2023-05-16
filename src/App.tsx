@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { DateTime as Luxon } from "luxon";
 import Date from "@/components/UI/Date";
 import Input from "@/components/UI/Input";
@@ -33,6 +33,16 @@ function App() {
         volkswagen: true,
     });
 
+    const width = useSyncExternalStore(
+        (callback) => {
+            window.addEventListener("resize", callback);
+            return () => {
+                window.removeEventListener("resize", callback);
+            };
+        },
+        () => window.innerWidth,
+    );
+
     useEffect(() => {
         if (!ref.current) return;
 
@@ -62,6 +72,8 @@ function App() {
         <div className={styles.app}>
             <Typography color="secondary">
                 App is running in {import.meta.env.MODE} mode
+                <br />
+                Client width: {width}
             </Typography>
             <Timestamp
                 locale="en"

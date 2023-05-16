@@ -1,6 +1,4 @@
-import React, {
-    createContext, useContext, useEffect, useLayoutEffect, useState,
-} from "react";
+import React, { createContext, useContext, useLayoutEffect, useSyncExternalStore } from "react";
 import { dark as darkTheme } from "@/constants/media";
 import Themes from "@/constants/themes";
 
@@ -23,10 +21,19 @@ export const useThemeContext = (): IContext => {
     throw new Error("Context must be used within Provider!");
 };
 
-const isDark = window.matchMedia(darkTheme).matches;
+const query = window.matchMedia(darkTheme);
+
+const getSnapshot = () => (query.matches ? Themes.dark : Themes.light);
+
+const callback = (callback: () => void) => {
+    query.addEventListener("change", callback);
+    return () => {
+        query.removeEventListener("change", callback);
+    };
+};
 
 export const ThemeContext: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [theme, setTheme] = useState(isDark ? Themes.dark : Themes.light);
+    const theme = useSyncExternalStore(callback, getSnapshot);
 
     // layoutEffect to add the required class before the page is displayed
     useLayoutEffect(() => {
@@ -37,20 +44,6 @@ export const ThemeContext: React.FC<{ children: React.ReactNode }> = ({ children
             document.body.classList.remove(themeClassName);
         };
     }, [theme]);
-
-    // useEffect to monitor for theme updating
-    useEffect(() => {
-        const query = window.matchMedia(darkTheme);
-
-        const mqListener = (e: MediaQueryListEvent) => {
-            setTheme(e.matches ? Themes.dark : Themes.light);
-        };
-
-        query.addEventListener("change", mqListener);
-        return () => {
-            query.removeEventListener("change", mqListener);
-        };
-    }, []);
 
     return (
         <Context.Provider value={theme}>
