@@ -12,7 +12,6 @@ import Timestamp from "@/components/Timestamp";
 import Checkbox from "@/components/UI/Checkbox";
 import Password from "@/components/UI/Password";
 import Typography from "@/components/UI/Typography";
-import useClickOutside from "@/hooks/useClickOutside";
 import styles from "./App.module.sass";
 
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, expedita";
@@ -38,13 +37,6 @@ function App() {
 
         ref.current.focus();
     }, [ref]);
-
-    useClickOutside(
-        ref,
-        () => {
-            console.log("Clicked outside!");
-        },
-    );
 
     const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;

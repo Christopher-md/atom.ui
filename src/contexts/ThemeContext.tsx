@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useLayoutEffect, useSyncExternalStore } from "react";
-import { dark as darkTheme } from "@/constants/media";
+import { dark } from "@/constants/queries";
 import Themes from "@/constants/themes";
 
 const Classes = {
@@ -9,7 +9,7 @@ const Classes = {
 
 type Callback = () => void;
 
-type IContext = Themes.dark | Themes.light;
+type IContext = Themes.light | Themes.dark;
 
 const initState = Themes.light;
 
@@ -23,7 +23,7 @@ export const useThemeContext = (): IContext => {
     throw new Error("Context must be used within Provider!");
 };
 
-const query = window.matchMedia(darkTheme);
+const query = window.matchMedia(dark);
 
 const getSnapshot = () => (query.matches ? Themes.dark : Themes.light);
 
