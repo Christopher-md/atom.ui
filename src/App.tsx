@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { DateTime as Luxon } from "luxon";
 import Date from "@/components/UI/Date";
+import Badge from "@/components/UI/Badge";
 import Input from "@/components/UI/Input";
 import Radio from "@/components/UI/Radio";
 import Counter from "@/components/Counter";
@@ -96,12 +97,13 @@ function App() {
                 className={styles.counter}
                 onChange={(number) => setCount(number)}
             />
-            <Tooltip
-                text={lorem}
-                className={styles.tooltip}
-            >
-                <Button>Hover me</Button>
-            </Tooltip>
+            <Badge content="99+">
+                <Tooltip
+                    text={lorem}
+                >
+                    <Button>Hover me</Button>
+                </Tooltip>
+            </Badge>
             <Switch
                 checked={checked}
                 className={styles.switch}

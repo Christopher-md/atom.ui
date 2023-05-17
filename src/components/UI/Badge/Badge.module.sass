@@ -1,0 +1,25 @@
+@import "@/styles/sass/colors"
+
+.badge
+  position: relative
+  display: inline-block
+
+  &:before
+    top: 0
+    left: 0
+    content: ""
+    padding: 6px
+    border-radius: 50%
+    position: absolute
+    background-color: $light-red
+    transform: translate(-50%, -50%)
+
+  &[data-content]
+    &:before
+      padding: 2px
+      display: flex
+      font-size: 12px
+      border-radius: 5px
+      align-items: center
+      justify-content: center
+      content: attr(data-content)
