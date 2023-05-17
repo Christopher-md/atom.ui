@@ -1,41 +1,58 @@
 @import "@/styles/sass/colors"
 
+$colors: "red" $light-red, "blue" $light-blue, "orange" $dark-orange, "green" $color--emerald
+$placements: "top-left" -50% -50%, "top-right" 50% -50%, "bottom-left" -50% 50%, "bottom-right" 50% 50%
+
+@mixin generateColors
+  @each $class, $color in $colors
+    &.#{$class}
+      &:before
+        background-color: $color
+
+@mixin generatePlacements
+  @each $class, $placementX, $placementY in $placements
+    &.#{$class}
+      &:before
+        transform: translate($placementX, $placementY)
+
 .badge
   position: relative
   display: inline-block
 
+  // Calling mixins to generate colors and placement
+  +generateColors
+  +generatePlacements
+
   &:before
-    top: 0
-    left: 0
     content: ""
+    z-index: 999
     padding: 6px
     border-radius: 50%
     position: absolute
-    background-color: $light-red
-    transform: translate(-50%, -50%)
 
   &[data-content]
     &:before
       padding: 2px
       display: flex
       font-size: 12px
+      line-height: 1.2
       border-radius: 5px
       align-items: center
       justify-content: center
       content: attr(data-content)
 
-  &.red
+  &.top-left, &.top-right
     &:before
-      background-color: $light-red
+      top: 0
 
-  &.blue
+  &.bottom-left, &.bottom-right
     &:before
-      background-color: $light-blue
+      bottom: 0
 
-  &.orange
+  &.top-left, &.bottom-left
     &:before
-      background-color: $dark-orange
+      left: 0
 
-  &.green
+  &.top-right, &.bottom-right
     &:before
-      background-color: $color--emerald
+      right: 0
