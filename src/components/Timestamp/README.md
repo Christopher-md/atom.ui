@@ -1,31 +1,27 @@
-# Counter
+# Timestamp
 
-> UI `<Counter />` component
+> UI `<Timestamp />` component
 
 ## Usage
 
 ```tsx
-import Counter from "@/components/Counter";
+import Timestamp from "@/components/Timestamp";
 
-const App = () => {
-    const [count, setCount] = useState(0);
-
-    return (
-        <Counter
-            count={count}
-            className="counter"
-            onChange={(number) => setCount(number)}
-        />
-    )
-};
+const App = () =>  (
+    <Timestamp
+        locale="en"
+        className="timestamp"
+        format={Luxon.DATETIME_MED_WITH_SECONDS}
+    />
+);
 
 export default App;
 ```
 
 ## Properties
 
-| Name      | Type                       | Description                           |  
-|:----------|:---------------------------|:--------------------------------------|  
-| onChange  | `(number: number) => void` | Event of getting a new value          |
-| count     | `number`                   | Value to control component            |
-| className | `string`                   | Prop for defining and changing styles |
+| Name       | Type                         | Description                                |  
+|:-----------|:-----------------------------|:-------------------------------------------|  
+| format     | `Intl.DateTimeFormatOptions` | Date format to be displayed                |
+| className  | `string`                     | Prop for defining and changing styles      |
+| locale     | `string`                     | Get the locale of a DateTime, such 'en-GB' |

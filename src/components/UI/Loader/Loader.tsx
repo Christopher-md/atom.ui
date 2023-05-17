@@ -4,7 +4,7 @@ import type Props from "./types";
 import styles from "./Loader.module.sass";
 
 const Loader: FC<Props> = (props) => {
-    const { type = "static", full, center, className, ...rest } = props;
+    const { type = "static", size = "medium", full, center, className, ...rest } = props;
 
     return (
         <div
@@ -19,7 +19,14 @@ const Loader: FC<Props> = (props) => {
             )}
             {...rest}
         >
-            <div className={styles.ldsRipple}>
+            <div
+                className={classNames(
+                    styles["lds-ring"],
+                    styles[size],
+                )}
+            >
+                <div />
+                <div />
                 <div />
                 <div />
             </div>
