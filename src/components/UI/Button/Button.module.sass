@@ -1,17 +1,36 @@
 @import "@/styles/sass/colors"
+@import "@/styles/sass/mixins"
 
 .button
   cursor: pointer
   font-size: 16px
   font-weight: 500
   border-radius: 8px
-  padding: 0.6em 1.2em
   font-family: inherit
   border: 1px solid transparent
   transition: border-color 0.25s
   background-color: var(--bg-tertiary)
+  // Calling mixins
+  +disable-text-selection
 
-  &:hover
+  & > .content
+    width: 100%
+    height: 100%
+    display: block
+    padding: 0.6em 1.2em
+    color: var(--text-secondary)
+
+  &:disabled
+    cursor: default
+    box-shadow: none
+    position: relative
+    pointer-events: none
+    background-color: var(--disabled)
+
+    & > .content
+      color: var(--text-tertiary)
+
+  &:hover:enabled
     border-color: #646cff
 
   &:focus, &:focus-visible

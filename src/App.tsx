@@ -96,7 +96,7 @@ function App() {
             </div>
             <div className={styles.flex}>
                 <Tooltip text={lorem}>
-                    <Button>Hover me</Button>
+                    <Button disabled>Hover me</Button>
                 </Tooltip>
                 <Badge
                     color={online ? "green" : "red"}
