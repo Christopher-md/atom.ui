@@ -3,7 +3,7 @@
 
 $theme: var(--bg-tertiary)
 $text: var(--text-secondary)
-$disabled: rgba(0, 0, 0, .10)
+$disabled: rgba(0, 0, 0, .20)
 
 =placeholder()
   opacity: 0
@@ -14,13 +14,13 @@ $disabled: rgba(0, 0, 0, .10)
 
 .input-wrapper
   width: 200px
-  overflow: hidden
   position: relative
   display: inline-block
 
 .container
-  background-color: $theme
+  overflow: hidden
   border-radius: 8px
+  background-color: $theme
 
   &.error
     border: 1px solid $lightest-red
