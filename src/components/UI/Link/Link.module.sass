@@ -1,0 +1,34 @@
+@import "@/styles/sass/colors"
+@import "@/styles/sass/mixins"
+
+$disabled-color: $grey
+$main-color: $lightest-red
+
+.link
+  position: relative
+  display: inline-block
+  text-decoration: none
+
+  &:before
+    left: 0
+    content: ""
+    width: 100%
+    height: 1px
+    bottom: 4px
+    position: absolute
+    background-color: $main-color
+
+  &.disabled
+    color: unset
+    cursor: default
+    pointer-events: none
+
+    &:before
+      background-color: $disabled-color
+
+    .content
+      color: $disabled-color
+
+.content
+  line-height: 0
+  color: $main-color

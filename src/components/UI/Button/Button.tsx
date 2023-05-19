@@ -8,7 +8,7 @@ import styles from "./Button.module.sass";
  * Created by chaikovskiy on 20.04.2023
  */
 const Button: React.FC<Props> = (props) => {
-    const { children, type = "button", onClick, interval, className, ...rest } = props;
+    const { children, type = "button", onClick, interval = 0, className, ...rest } = props;
     const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     useEffect(() => () => {
@@ -20,11 +20,9 @@ const Button: React.FC<Props> = (props) => {
     const onHandleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
         if (!onClick || timerRef.current) return;
 
-        if (interval) {
-            timerRef.current = setTimeout(() => {
-                timerRef.current = null;
-            }, interval);
-        }
+        timerRef.current = setTimeout(() => {
+            timerRef.current = null;
+        }, interval);
 
         onClick(event);
     };
@@ -41,6 +39,7 @@ const Button: React.FC<Props> = (props) => {
         >
             <Typography
                 size="inherit"
+                disableSelection
                 color="secondary"
                 className={styles.content}
             >
