@@ -102,7 +102,7 @@ function App() {
                     color={online ? "green" : "red"}
                     content={online ? "Online" : "Offline"}
                 >
-                    <Button onClick={toggle}>Click me</Button>
+                    <Button interval={500} onClick={toggle}>Click me</Button>
                 </Badge>
             </div>
             <Counter

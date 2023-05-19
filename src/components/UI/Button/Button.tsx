@@ -15,7 +15,7 @@ const Button: React.FC<Props> = (props) => {
         if (!timerRef.current) return;
 
         clearTimeout(timerRef.current);
-    });
+    }, []);
 
     const onHandleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
         if (!onClick || timerRef.current) return;
