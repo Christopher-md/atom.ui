@@ -3,22 +3,26 @@
 $themes: (
         text-primary: (
                 dark-theme: $white,
-                light-theme: $dark-grey
+                light-theme: $dark-grey,
         ),
         text-secondary: (
                 dark-theme: $light-grey,
-                light-theme: $grey
+                light-theme: $grey,
         ),
         bg-primary: (
                 dark-theme: $darkest-grey-primary,
-                light-theme: $white
+                light-theme: $white,
         ),
         bg-secondary: (
                 dark-theme: $darkest-grey-secondary,
-                light-theme: $lightest-grey-primary
+                light-theme: $lightest-grey-primary,
         ),
         bg-tertiary: (
                 dark-theme: $dark-grey,
-                light-theme: $lightest-grey-secondary
+                light-theme: $lightest-grey-secondary,
+        ),
+        disabled: (
+                dark-theme: $disabled-dark,
+                light-theme: $disabled-light,
         ),
 );

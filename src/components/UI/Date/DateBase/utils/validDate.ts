@@ -1,4 +1,5 @@
 import isLeapYear from "@/utils/isLeapYear";
+import monthLength from "../constants/monthLength";
 
 type Options = {
     hyphen: string;
@@ -6,24 +7,9 @@ type Options = {
     yearMin: string;
 };
 
-export const monthLength = {
-    "01": "31",
-    "02": "28",
-    "03": "31",
-    "04": "30",
-    "05": "31",
-    "06": "30",
-    "07": "31",
-    "08": "31",
-    "09": "30",
-    10: "31",
-    11: "30",
-    12: "31",
-};
+const concatHyphenBefore = (value: string, hyphen: string) => (value.length !== 0 ? `${hyphen}${value}` : "");
 
-const concatHyphenBefore = (value: string, hyphen: string): string => (value.length !== 0 ? `${hyphen}${value}` : "");
-
-function limit(value: string, max: string, min = "01", length = 2): string {
+function limit(value: string, max: string, min = "01", length = 2) {
     if (value.length === 1 && value[0] > max[0]) {
         value = `0${value}`;
     }
@@ -39,7 +25,7 @@ function limit(value: string, max: string, min = "01", length = 2): string {
     return value;
 }
 
-const maxDayOfMonth = (month: string, year: string, yearMin: string): string => {
+const maxDayOfMonth = (month: string, year: string, yearMin: string) => {
     if (!(month.length === 2 && year.length === (yearMin.length || 4))) return "31";
 
     const yearInt = parseInt(year, 10);
@@ -53,7 +39,7 @@ const maxDayOfMonth = (month: string, year: string, yearMin: string): string => 
     return monthLength[month as keyof typeof monthLength];
 };
 
-export const validDate = (string: string, { hyphen, yearMax, yearMin }: Options): string => {
+const validDate = (string: string, { hyphen, yearMax, yearMin }: Options) => {
     // get valid month
     const month = limit(string.substring(2, 4), "12");
     // get valid year
@@ -69,3 +55,5 @@ export const validDate = (string: string, { hyphen, yearMax, yearMin }: Options)
         + concatHyphenBefore(year, hyphen)
     );
 };
+
+export default validDate;

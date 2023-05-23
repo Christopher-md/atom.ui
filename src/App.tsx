@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { DateTime as Luxon } from "luxon";
 import Date from "@/components/UI/Date";
+import Link from "@/components/UI/Link";
 import Badge from "@/components/UI/Badge";
 import Input from "@/components/UI/Input";
 import Radio from "@/components/UI/Radio";
@@ -63,6 +64,7 @@ function App() {
                 className={styles.timestamp}
                 format={Luxon.DATETIME_MED_WITH_SECONDS}
             />
+            <Link to="https://google.com" />
             <div className={styles.flex}>
                 <Input
                     ref={ref}
@@ -96,13 +98,13 @@ function App() {
             </div>
             <div className={styles.flex}>
                 <Tooltip text={lorem}>
-                    <Button>Hover me</Button>
+                    <Button disabled>Hover me</Button>
                 </Tooltip>
                 <Badge
                     color={online ? "green" : "red"}
                     content={online ? "Online" : "Offline"}
                 >
-                    <Button onClick={toggle}>Click me</Button>
+                    <Button interval={500} onClick={toggle}>Click me</Button>
                 </Badge>
             </div>
             <Counter
