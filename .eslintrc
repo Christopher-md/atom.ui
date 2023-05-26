@@ -17,14 +17,18 @@
     "object-shorthand": "off",
     "react/prop-types": "off",
     "consistent-return": "off",
+    "no-nested-ternary": "off",
     "no-param-reassign": "off",
     "react/jsx-no-bind": "off",
+    "prefer-destructuring": "off",
     "react/button-has-type": "off",
     "no-restricted-exports": "off",
+    "jsx-a11y/no-autofocus": "off",
     "react/jsx-indent": [
       "error",
       4
     ],
+    "react/no-array-index-key": "off",
     "import/no-named-as-default": "off",
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",

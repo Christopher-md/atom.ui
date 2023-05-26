@@ -20,6 +20,8 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", ".eslintrc", "vite.config.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "include": ["src", ".eslintrc", "vite.config.ts",
+    "index.ts"
+  ],
 }

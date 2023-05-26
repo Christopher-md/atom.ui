@@ -1,4 +1,4 @@
-@import "themes"
+@import "theme"
 
 =keyframes($name)
   @-webkit-keyframes #{$name}
@@ -37,8 +37,16 @@
   /* iOS Safari */
   -webkit-touch-callout: none
 
+=applyDarkModeStyles()
+  @media(prefers-color-scheme: dark)
+    @content
+
+=applyLightModeStyles()
+  @media(prefers-color-scheme: light)
+    @content
+
 =styles($mode)
-  @each $key, $map in $themes
+  @each $key, $map in $theme
     @each $prop, $color in $map
       @if $prop == $mode
         --#{$key}: #{$color}

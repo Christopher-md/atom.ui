@@ -40,6 +40,7 @@ const Checkbox: React.FC<Props> = (props) => {
                     <span className={styles.marker} />
                 </div>
                 <Typography
+                    color="primary"
                     disableSelection
                     className={styles["label-text"]}
                 >

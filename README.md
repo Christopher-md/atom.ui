@@ -1,24 +1,46 @@
-## React.js + Vite
+<style>
+    p {
+        font-size: 14px;
+    }
+    .text-center {
+        text-align: center;
+    }
+</style>
 
-> Vite - Next Generation Frontend Tooling
+<h1 class="text-center">Atom</h1>
 
-## Scaffolding Your First Vite Project
+---
+
+**Atom** is a npm user interface library based on React. It is fully customizable and allows you to use dark and light modes
+
+## Installation
 
 ### With npm:
-```bash
-npm create vite@latest
+```shell
+npm install @atom-dev/material
 ```
 
 ### With Yarn:
-```bash
-yarn create vite
+```shell
+yarn add @atom-dev/material
 ```
 
-### With PNPM:
-```bash
-pnpm create vite
-```
+## Getting started with Atom
 
-## Documentation
-- React - https://react.dev/
-- Vite - https://vitejs.dev/
+Here is an example of a basic app using Atom UI's Button component:
+
+```tsx
+import { Button } from "@atom-dev/material";
+import "@atom-dev/material/dist/style.css";
+
+const App = () => (
+    <Button 
+        interval={500} 
+        onClick={() => console.log("Clicked!")}
+    >
+        Click
+    </Button>
+);
+
+export default App;
+```

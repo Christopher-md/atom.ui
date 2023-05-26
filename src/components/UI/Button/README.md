@@ -5,7 +5,7 @@
 ## Usage
 
 ```tsx
-import Counter from "@/components/UI/Button";
+import Button from "@/components/UI/Button";
 
 const App = () => (
     <Button onClick={() => console.log("Clicked!")}>

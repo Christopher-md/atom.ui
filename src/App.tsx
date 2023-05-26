@@ -1,7 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import { DateTime as Luxon } from "luxon";
+import React, { useState } from "react";
 import Date from "@/components/UI/Date";
-import Link from "@/components/UI/Link";
 import Badge from "@/components/UI/Badge";
 import Input from "@/components/UI/Input";
 import Radio from "@/components/UI/Radio";
@@ -10,7 +8,7 @@ import Button from "@/components/UI/Button";
 import Number from "@/components/UI/Number";
 import Switch from "@/components/UI/Switch";
 import Tooltip from "@/components/UI/Tooltip";
-import Timestamp from "@/components/Timestamp";
+import PinInput from "@/components/UI/PinInput";
 import Checkbox from "@/components/UI/Checkbox";
 import Password from "@/components/UI/Password";
 import Typography from "@/components/UI/Typography";
@@ -20,7 +18,6 @@ import styles from "./App.module.sass";
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, expedita";
 
 function App() {
-    const ref = useRef<HTMLInputElement>(null);
     const [count, setCount] = useState(0);
     const [online, toggle] = useToggle(false);
     const [checked, setChecked] = useState(true);
@@ -35,12 +32,6 @@ function App() {
         mercedes: false,
         volkswagen: true,
     });
-
-    useEffect(() => {
-        if (!ref.current) return;
-
-        ref.current.focus();
-    }, [ref]);
 
     const onHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -59,15 +50,8 @@ function App() {
             <Typography color="secondary">
                 App is running in {import.meta.env.MODE} mode
             </Typography>
-            <Timestamp
-                locale="en"
-                className={styles.timestamp}
-                format={Luxon.DATETIME_MED_WITH_SECONDS}
-            />
-            <Link to="https://google.com" />
             <div className={styles.flex}>
                 <Input
-                    ref={ref}
                     label="ФИО"
                     name="fullName"
                     value={input.fullName}
@@ -96,6 +80,14 @@ function App() {
                     onChange={onHandleChange}
                 />
             </div>
+            <PinInput
+                autoFocus
+                length={6}
+                onComplete={(value) => {
+                    // Here you can make asynchronous requests to your API for verification.
+                    console.log(value);
+                }}
+            />
             <div className={styles.flex}>
                 <Tooltip text={lorem}>
                     <Button disabled>Hover me</Button>

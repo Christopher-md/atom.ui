@@ -1,38 +1,14 @@
+@import "@/styles/sass/colors"
 @import "@/styles/sass/mixins"
 
-*, *::before, *::after
-    margin: 0
-    padding: 0
-    box-sizing: inherit
-
 html
-    font-family: Calibri, sans-serif
-    line-height: 1.5
-    font-weight: 400
-
     font-synthesis: none
-    color-scheme: light dark
-    text-rendering: optimizeLegibility
-    -webkit-font-smoothing: antialiased
-    -moz-osx-font-smoothing: grayscale
     -webkit-text-size-adjust: 100%
-
-    box-sizing: border-box
+    -moz-osx-font-smoothing: grayscale
+    -webkit-font-smoothing: antialiased
 
 body
     min-width: 320px
-    background-color: var(--bg-primary)
+    font-family: Calibri, sans-serif
+    background-color: var(--bg-primary, $white)
 
-input, textarea, button
-    font-family: inherit
-
-.dark-mode
-    +styles("dark-theme")
-
-.light-mode
-    +styles("light-theme")
-
-@media (prefers-color-scheme: light)
-    html
-        color: #213547
-        background-color: #ffffff

@@ -1,23 +1,51 @@
 {
-  "name": "react-vite-project",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@atom-dev/material",
+  "private": false,
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Tchaikovsky",
+  "description": "React ui library",
+  "keywords": [
+    "react",
+    "react-component",
+    "react-ui",
+    "design"
+  ],
   "type": "module",
+  "files": [
+    "/dist"
+  ],
+  "types": "dist/index.d.ts",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js"
+    },
+    "./dist/style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "host": "vite --host"
   },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "dependencies": {
     "@popperjs/core": "^2.11.7",
     "classnames": "^2.3.2",
-    "luxon": "^3.3.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-number-format": "4.9.3",
     "react-popper": "^2.3.0",
-    "react-router-dom": "^6.11.2",
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
@@ -41,6 +69,7 @@
     "sass": "^1.60.0",
     "typescript": "^4.9.3",
     "vite": "^4.2.0",
+    "vite-plugin-dts": "^2.3.0",
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-svgr": "^3.2.0"
   }

@@ -1,5 +1,7 @@
-$color: var(--text-secondary)
-$background: var(--bg-tertiary)
+@import "@/styles/sass/colors"
+
+$color: var(--text-secondary, $grey)
+$background: var(--bg-tertiary, $lightest-grey-secondary)
 $placement: "top" bottom, "bottom" top, "left" right, "right" left
 
 @mixin generate_placement
@@ -8,6 +10,7 @@ $placement: "top" bottom, "bottom" top, "left" right, "right" left
       #{$reverse}: -4px
 
 .tooltip-wrapper
+  font-family: inherit
   display: inline-block
 
 .tooltip
@@ -20,11 +23,16 @@ $placement: "top" bottom, "bottom" top, "left" right, "right" left
   color: $color
   font-size: 13px
   max-width: 250px
+  line-height: 1.5
   padding: 5px 10px
   text-align: center
   border-radius: 4px
+  font-family: inherit
   display: inline-block
   background-color: $background
+
+  & > .popper-text
+    font-size: 12px
 
 .arrow
   visibility: hidden

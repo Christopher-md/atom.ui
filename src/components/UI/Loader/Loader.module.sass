@@ -1,4 +1,6 @@
-$color: var(--bg-tertiary)
+@import "@/styles/sass/colors"
+
+$color: var(--bg-tertiary, $lightest-grey-secondary)
 
 .wrapper
   line-height: 0
@@ -49,7 +51,10 @@ $color: var(--bg-tertiary)
     border-radius: 50%
     position: absolute
     border-style: solid
-    border-color: $color transparent transparent transparent
+    border-top-color: $color
+    border-left-color: transparent
+    border-right-color: transparent
+    border-bottom-color: transparent
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite
 
   & > div:nth-child(1)

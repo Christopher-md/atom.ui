@@ -1,15 +1,9 @@
 import React, { createContext, useContext, useLayoutEffect, useSyncExternalStore } from "react";
-import { dark } from "@/constants/queries";
 import Themes from "@/constants/themes";
-
-const Classes = {
-    dark: "dark-mode",
-    light: "light-mode",
-};
-
-type Callback = () => void;
-
-type IContext = Themes.light | Themes.dark;
+import { dark } from "@/constants/queries";
+import classes from "./constants/classes";
+import type { Props, IContext, Callback } from "./types";
+import "./Theme.sass";
 
 const initState = Themes.light;
 
@@ -34,18 +28,18 @@ const callback = (callback: Callback) => {
     };
 };
 
-export const ThemeContext: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const ThemeProvider: React.FC<Props> = ({ children, theme: themeProp }) => {
     const theme = useSyncExternalStore(callback, getSnapshot);
 
     // layoutEffect to add the required class before the page is displayed
     useLayoutEffect(() => {
-        const themeClassName = theme === Themes.dark ? Classes.dark : Classes.light;
+        const themeClassName = theme === Themes.dark ? classes.dark : classes.light;
 
         document.body.classList.add(themeClassName);
         return () => {
             document.body.classList.remove(themeClassName);
         };
-    }, [theme]);
+    }, [theme, themeProp]);
 
     return (
         <Context.Provider value={theme}>

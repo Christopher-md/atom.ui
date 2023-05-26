@@ -2,14 +2,17 @@
 @import "@/styles/sass/mixins"
 
 .button
+  margin: 0
+  padding: 0
   cursor: pointer
   font-size: 16px
   font-weight: 500
   border-radius: 8px
+  box-sizing: inherit
   font-family: inherit
   border: 1px solid transparent
   transition: border-color 0.25s
-  background-color: var(--bg-tertiary)
+  background-color: var(--bg-tertiary, $lightest-grey-secondary)
 
   &:hover:enabled
     border-color: $light-blue
@@ -22,7 +25,7 @@
     box-shadow: none
     position: relative
     pointer-events: none
-    background-color: var(--disabled)
+    background-color: var(--disabled, $disabled-light)
 
     .content
       color: $grey

@@ -41,6 +41,7 @@ const Radio: React.FC<Props> = (props) => {
                 </div>
                 <Typography
                     disableSelection
+                    color="primary"
                     className={styles["label-text"]}
                 >
                     {label}

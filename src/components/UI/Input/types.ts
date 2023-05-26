@@ -11,11 +11,17 @@ interface InputOwnProps {
     fullWidth?: boolean;
     value?: string | number;
     error?: boolean | string;
+    onBlur?: InputAttributes["onBlur"];
+    onFocus?: InputAttributes["onFocus"];
+    onChange?: InputAttributes["onChange"];
+    onMouseUp?: InputAttributes["onMouseUp"];
+    onKeyDown?: InputAttributes["onKeyDown"];
 }
 
 type InputProps<Props, Type = InputAttributes> =
     Props &
-    Omit<Type, keyof Props> & {
+    Omit<Type, keyof Props> &
+    Omit<InputAttributes, keyof Type> & {
         as?: ComponentType<Type>;
     };
 
