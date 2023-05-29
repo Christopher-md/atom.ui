@@ -1,8 +1,7 @@
-import Themes from "@/constants/themes";
 import React from "react";
+import Themes from "@/constants/themes";
 
 interface Props {
-    theme?: Themes;
     children: React.ReactNode;
 }
 

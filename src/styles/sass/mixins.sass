@@ -1,4 +1,4 @@
-@import "theme"
+@import "../../contexts/ThemeContext/styles/sass/themes"
 
 =keyframes($name)
   @-webkit-keyframes #{$name}
@@ -44,9 +44,3 @@
 =applyLightModeStyles()
   @media(prefers-color-scheme: light)
     @content
-
-=styles($mode)
-  @each $key, $map in $theme
-    @each $prop, $color in $map
-      @if $prop == $mode
-        --#{$key}: #{$color}

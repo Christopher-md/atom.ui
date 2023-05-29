@@ -1,5 +1,4 @@
 enum Themes {
-    both = "both",
     dark = "dark",
     light = "light",
 }

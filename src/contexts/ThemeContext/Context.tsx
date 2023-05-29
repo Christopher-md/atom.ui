@@ -28,7 +28,7 @@ const callback = (callback: Callback) => {
     };
 };
 
-export const ThemeProvider: React.FC<Props> = ({ children, theme: themeProp }) => {
+export const ThemeProvider: React.FC<Props> = ({ children }) => {
     const theme = useSyncExternalStore(callback, getSnapshot);
 
     // layoutEffect to add the required class before the page is displayed
@@ -39,7 +39,7 @@ export const ThemeProvider: React.FC<Props> = ({ children, theme: themeProp }) =
         return () => {
             document.body.classList.remove(themeClassName);
         };
-    }, [theme, themeProp]);
+    }, [theme]);
 
     return (
         <Context.Provider value={theme}>
