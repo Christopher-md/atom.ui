@@ -1,27 +1,31 @@
 import React, { useState } from "react";
+import Badge from "@/components/Badge";
 import Date from "@/components/UI/Date";
-import Badge from "@/components/UI/Badge";
 import Input from "@/components/UI/Input";
 import Radio from "@/components/UI/Radio";
 import Counter from "@/components/Counter";
 import Button from "@/components/UI/Button";
 import Number from "@/components/UI/Number";
 import Switch from "@/components/UI/Switch";
+import PinInput from "@/components/PinInput";
+import Paginate from "@/components/Paginate";
 import Tooltip from "@/components/UI/Tooltip";
-import PinInput from "@/components/UI/PinInput";
 import Checkbox from "@/components/UI/Checkbox";
 import Password from "@/components/UI/Password";
 import Typography from "@/components/UI/Typography";
 import useToggle from "@/hooks/useToggle";
+import Search from "@/components/UI/Search";
 import styles from "./App.module.sass";
 
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, expedita";
 
 function App() {
+    const [page, setPage] = useState(0);
     const [count, setCount] = useState(0);
     const [online, toggle] = useToggle(false);
     const [checked, setChecked] = useState(true);
     const [input, setInput] = useState({
+        search: "",
         gender: "Male",
         phone: undefined,
         date: "29.07.2000",
@@ -50,6 +54,11 @@ function App() {
             <Typography color="secondary">
                 App is running in {import.meta.env.MODE} mode
             </Typography>
+            <Paginate
+                pageCount={25}
+                forcePage={page}
+                onPageChange={({ selected }) => setPage(selected)}
+            />
             <div className={styles.flex}>
                 <Input
                     label="ФИО"
@@ -79,18 +88,26 @@ function App() {
                     value={input.password}
                     onChange={onHandleChange}
                 />
+                <Search
+                    name="search"
+                    label="Поиск..."
+                    value={input.search}
+                    onChange={onHandleChange}
+                    onEnter={() => console.log("Enter!")}
+                    onSearch={() => console.log("Search!")}
+                />
             </div>
             <PinInput
                 autoFocus
                 length={6}
                 onComplete={(value) => {
                     // Here you can make asynchronous requests to your API for verification.
-                    console.log(value);
+                    console.log(`Done! Your code: ${value}`);
                 }}
             />
             <div className={styles.flex}>
                 <Tooltip text={lorem}>
-                    <Button disabled>Hover me</Button>
+                    <Button loading disabled>Hover me</Button>
                 </Tooltip>
                 <Badge
                     color={online ? "green" : "red"}

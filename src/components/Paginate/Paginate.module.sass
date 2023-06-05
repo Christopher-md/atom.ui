@@ -1,0 +1,33 @@
+@import "@/styles/sass/mixins"
+@import "@/styles/sass/variables"
+
+.container
+  margin: 0
+  padding: 0
+  display: flex
+  list-style: none
+
+.page, .next, .prev, .break
+  width: 40px
+  height: 40px
+  display: flex
+  cursor: pointer
+  font-size: 14px
+  font-weight: 500
+  border-radius: 4px
+  font-style: normal
+  align-items: center
+  justify-content: center
+  color: var(--text-secondary, #707070)
+
+  +disable-text-selection
+  +breakpointDown($device--tablet-m)
+    width: 28px
+    height: 28px
+
+  &.active
+    background-color: var(--bg-tertiary, #ececec)
+
+.next, .prev
+  path
+    fill: var(--text-secondary, #707070)
