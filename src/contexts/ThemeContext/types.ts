@@ -1,5 +1,5 @@
-import React from "react";
 import Themes from "@/constants/themes";
+import React from "react";
 
 interface Props {
     children: React.ReactNode;

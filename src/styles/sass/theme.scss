@@ -1,6 +1,6 @@
-@import "@/styles/sass/colors";
+@import "colors";
 
-$themes: (
+$theme: (
         text-primary: (
                 dark-theme: $white,
                 light-theme: $dark-grey,

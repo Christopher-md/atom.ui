@@ -6,7 +6,7 @@ type InputAttributes =
     };
 
 interface InputOwnProps {
-    label: string;
+    label?: string;
     className?: string;
     fullWidth?: boolean;
     value?: string | number;

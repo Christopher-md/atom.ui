@@ -35,17 +35,19 @@ function Input<Type = InputAttributes>(
                     className={styles.input}
                     {...rest as Type}
                 />
-                <label
-                    htmlFor={id}
-                    title={label}
-                    className={classNames(styles.label, {
-                        [styles.error]: error,
-                        [styles.filled]: value,
-                        [styles.focused]: focused,
-                    })}
-                >
-                    {label}
-                </label>
+                {label && (
+                    <label
+                        htmlFor={id}
+                        title={label}
+                        className={classNames(styles.label, {
+                            [styles.error]: error,
+                            [styles.filled]: value,
+                            [styles.focused]: focused,
+                        })}
+                    >
+                        {label}
+                    </label>
+                )}
             </div>
             {typeof error === "string" && (
                 <Typography color="red" className={styles.error}>

@@ -1,5 +1,6 @@
 import React, { MouseEventHandler, useEffect, useRef } from "react";
 import classNames from "classnames";
+import Loader from "@/components/UI/Loader";
 import Typography from "@/components/UI/Typography";
 import type Props from "./types";
 import styles from "./Button.module.sass";
@@ -8,7 +9,7 @@ import styles from "./Button.module.sass";
  * Created by chaikovskiy on 20.04.2023
  */
 const Button: React.FC<Props> = (props) => {
-    const { children, type = "button", onClick, interval = 0, className, ...rest } = props;
+    const { children, type = "button", onClick, interval = 0, loading, className, ...rest } = props;
     const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     useEffect(() => () => {
@@ -45,6 +46,9 @@ const Button: React.FC<Props> = (props) => {
             >
                 {children}
             </Typography>
+            {loading && (
+                <Loader size="extra-small" />
+            )}
         </button>
     );
 };

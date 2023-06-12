@@ -1,0 +1,39 @@
+@import "@/styles/sass/colors"
+
+.input
+  padding-right: 42px
+
+  /* clears the ‘X’ from Internet Explorer */
+  &[type=search]::-ms-clear,
+  &[type=search]::-ms-reveal
+    display: none
+    width : 0
+    height: 0
+
+  /* clears the ‘X’ from Chrome */
+  &[type="search"]::-webkit-search-decoration,
+  &[type="search"]::-webkit-search-cancel-button,
+  &[type="search"]::-webkit-search-results-button,
+  &[type="search"]::-webkit-search-results-decoration
+    display: none
+
+.btn-icon
+  border: 0
+  margin: 0
+  padding: 0
+  z-index: 3
+  right: 12px
+  bottom: 10px
+  cursor: pointer
+  position: absolute
+  background-color: transparent
+  transition: transform 100ms ease-in-out
+
+  &:active
+    transform: scale(0.95)
+
+.icon
+  width: 18px
+  height: 18px
+  display: block
+  fill: var(--text-secondary, $grey)

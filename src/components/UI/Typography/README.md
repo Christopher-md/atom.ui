@@ -22,10 +22,10 @@ export default App;
 
 The component also accepts all HTML properties of the tag that was passed to it in prop `as`. By default, it is equal to the span tag
 
-| Name             | Type                                  | Description                                                                                                                   |  
-|:-----------------|:--------------------------------------|:------------------------------------------------------------------------------------------------------------------------------|  
-| color            | `primary`, `secondary`, `red`         | Text color                                                                                                                    |
-| children         | `React.ReactNode`                     | Content of the component                                                                                                      |
-| as               | `p`, `span`, `h1-h6`                  | Component to be displayed                                                                                                     |
-| disableSelection | `boolean`                             | Disables text selection                                                                                                       |
-| size             | `small`, `medium`, `large`, `inherit` | Размер текста. Small равен 14px, medium равен 24px, large равен 32px и inherit наследует размер текста родительского элемента |
+| Name             | Type                                  | Description                                                                                                                 |  
+|:-----------------|:--------------------------------------|:----------------------------------------------------------------------------------------------------------------------------|  
+| color            | `primary`, `secondary`, `red`         | Text color                                                                                                                  |
+| children         | `React.ReactNode`                     | Content of the component                                                                                                    |
+| as               | `p`, `span`, `h1-h6`                  | Component to be displayed                                                                                                   |
+| disableSelection | `boolean`                             | Disables text selection                                                                                                     |
+| size             | `small`, `medium`, `large`, `inherit` | The size of the text. Small is 14px, medium is 24px, large is 32px and inherit inherits the text size of the parent element |

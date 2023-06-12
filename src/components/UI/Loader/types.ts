@@ -1,8 +1,8 @@
 import { HTMLAttributes } from "react";
 
-type Size = "small" | "medium" | "large";
-
 type Type = "fixed" | "absolute" | "static";
+
+type Size = "extra-small" | "small" | "medium" | "large";
 
 type LoaderOwnProps = {
     type?: Type;
