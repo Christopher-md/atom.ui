@@ -30,7 +30,7 @@ export default App;
 
 ## Properties
 
-The password component extends all the input's own HTML attributes, NumberFormatProps form `react-number-format` library and several non-native ones:
+The password component extends all the input's own HTML attributes and several non-native ones:
 
 | Name      | Type                | Description                                                                                 |  
 |:----------|:--------------------|:--------------------------------------------------------------------------------------------|  

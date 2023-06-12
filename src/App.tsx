@@ -12,8 +12,8 @@ import Paginate from "@/components/Paginate";
 import Tooltip from "@/components/UI/Tooltip";
 import Checkbox from "@/components/UI/Checkbox";
 import Password from "@/components/UI/Password";
-import Typography from "@/components/UI/Typography";
 import useToggle from "@/hooks/useToggle";
+import Typography from "@/components/UI/Typography";
 import Search from "@/components/UI/Search";
 import styles from "./App.module.sass";
 
@@ -27,10 +27,10 @@ function App() {
     const [input, setInput] = useState({
         search: "",
         gender: "Male",
+        name: "Google",
         phone: undefined,
         date: "29.07.2000",
         password: "qwerty",
-        fullName: "Чайковский К.А.",
     });
     const [cars, setCars] = useState({
         mercedes: false,
@@ -61,40 +61,38 @@ function App() {
             />
             <div className={styles.flex}>
                 <Input
-                    label="ФИО"
-                    name="fullName"
-                    value={input.fullName}
+                    disabled
+                    name="name"
+                    label="Company"
+                    value={input.name}
                     onChange={onHandleChange}
-                    placeholder="Чайковский К.А."
                 />
                 <Number
                     name="phone"
+                    label="Phone"
                     value={input.phone}
-                    label="Номер телефона"
                     onChange={onHandleChange}
                     format="+373 (###) #####"
                     placeholder="+373 (###) #####"
                 />
                 <Date
                     name="date"
-                    label="Дата"
+                    label="Date"
                     value={input.date}
-                    placeholder="дд.мм.гггг"
+                    placeholder="dd.mm.yyyy"
                     onChange={onHandleChange}
                 />
                 <Password
-                    label="Пароль"
+                    label="Password"
                     name="password"
                     value={input.password}
                     onChange={onHandleChange}
                 />
                 <Search
-                    name="search"
-                    label="Поиск..."
+                    label="Search..."
                     value={input.search}
                     onChange={onHandleChange}
                     onEnter={() => console.log("Enter!")}
-                    onSearch={() => console.log("Search!")}
                 />
             </div>
             <PinInput

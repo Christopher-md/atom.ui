@@ -9,7 +9,7 @@ import styles from "./PasswordBase.module.sass";
  * Created by chaikovskiy on 10.05.2023
  */
 const PasswordBase: React.FC<Props> = (props) => {
-    const { className, ...rest } = props;
+    const { disabled, className, ...rest } = props;
 
     const [show, setShow] = useState(false);
 
@@ -22,6 +22,7 @@ const PasswordBase: React.FC<Props> = (props) => {
         <>
             <input
                 type={type}
+                disabled={disabled}
                 className={classNames(
                     styles.input,
                     className,
@@ -30,6 +31,7 @@ const PasswordBase: React.FC<Props> = (props) => {
             />
             <button
                 onClick={toggle}
+                disabled={disabled}
                 className={styles["btn-icon"]}
             >
                 <Icon className={styles.icon} />

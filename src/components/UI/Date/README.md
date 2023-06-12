@@ -18,9 +18,9 @@ const App = () => {
     return (
         <Date
             name="date"
-            label="Дата"
+            label="Date"
             value={input}
-            placeholder="дд.мм.гггг"
+            placeholder="dd.mm.yyyy"
             onChange={onHandleChange}
         />
     );
