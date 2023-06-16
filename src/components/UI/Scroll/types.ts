@@ -1,8 +1,8 @@
 import React from "react";
 
 type Props = {
-    children: React.ReactNode;
     className?: string;
+    children: React.ReactNode;
 };
 
 export default Props;

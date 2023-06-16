@@ -1,18 +1,28 @@
 import React from "react";
 import Input from "@/components/UI/Input/Input";
-import SearchBase from "./SearchBase";
 import type Props from "./types";
 
 /**
  * Created by chaikovskiy on 05.06.2023
  */
 const Search: React.FC<Props> = (props) => {
-    const { label, ...rest } = props;
+    const { label, onEnter, onKeyDown, ...rest } = props;
+
+    const onHandleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (event) => {
+        if (event.key === "Enter" && onEnter) {
+            onEnter();
+        }
+
+        if (onKeyDown) {
+            onKeyDown(event);
+        }
+    };
 
     return (
         <Input
             label={label}
-            as={SearchBase}
+            type="search"
+            onKeyDown={onHandleKeyDown}
             {...rest}
         />
     );

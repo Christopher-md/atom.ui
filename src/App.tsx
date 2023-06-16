@@ -7,17 +7,23 @@ import Counter from "@/components/Counter";
 import Button from "@/components/UI/Button";
 import Number from "@/components/UI/Number";
 import Switch from "@/components/UI/Switch";
+import Search from "@/components/UI/Search";
 import PinInput from "@/components/PinInput";
 import Paginate from "@/components/Paginate";
 import Tooltip from "@/components/UI/Tooltip";
 import Checkbox from "@/components/UI/Checkbox";
 import Password from "@/components/UI/Password";
+import { Select, AsyncSelect } from "@/components/UI/Select";
 import useToggle from "@/hooks/useToggle";
-import Typography from "@/components/UI/Typography";
-import Search from "@/components/UI/Search";
 import styles from "./App.module.sass";
 
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, expedita";
+
+const options = [
+    { label: "First", value: "first" },
+    { label: "Second", value: "second" },
+    { label: "Third", value: "third" },
+];
 
 function App() {
     const [page, setPage] = useState(0);
@@ -49,11 +55,17 @@ function App() {
         setCars((prev) => ({ ...prev, [name]: checked }));
     };
 
+    const loadOptions = (
+        inputValue: string,
+        callback: (opt: typeof options) => void,
+    ) => {
+        setTimeout(() => {
+            callback(options);
+        }, 3000);
+    };
+
     return (
         <div className={styles.app}>
-            <Typography color="secondary">
-                App is running in {import.meta.env.MODE} mode
-            </Typography>
             <Paginate
                 pageCount={25}
                 forcePage={page}
@@ -83,16 +95,27 @@ function App() {
                     onChange={onHandleChange}
                 />
                 <Password
-                    label="Password"
                     name="password"
+                    label="Password"
                     value={input.password}
                     onChange={onHandleChange}
                 />
                 <Search
+                    name="search"
                     label="Search..."
                     value={input.search}
                     onChange={onHandleChange}
                     onEnter={() => console.log("Enter!")}
+                />
+                <Select
+                    isMulti
+                    options={options}
+                />
+                <AsyncSelect
+                    isMulti
+                    cacheOptions
+                    defaultOptions
+                    loadOptions={loadOptions}
                 />
             </div>
             <PinInput

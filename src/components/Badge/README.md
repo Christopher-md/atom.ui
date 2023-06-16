@@ -8,7 +8,7 @@
 import React from "react";
 import useToggle from "@/hooks/useToggle";
 
-import Badgg from "@/components/Badge";
+import Badge from "@/components/Badge";
 import Button from "@/components/UI/Button";
 
 const App = () => {

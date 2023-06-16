@@ -12,6 +12,7 @@ export { default as Number } from "./src/components/UI/Number";
 export { default as Button } from "./src/components/UI/Button";
 export { default as PinInput } from "./src/components/PinInput";
 export { default as Paginate } from "./src/components/Paginate";
+export { Select, AsyncSelect } from "./src/components/UI/Select";
 export { default as Tooltip } from "./src/components/UI/Tooltip";
 export { default as Password } from "./src/components/UI/Password";
 export { default as Checkbox } from "./src/components/UI/Checkbox";
