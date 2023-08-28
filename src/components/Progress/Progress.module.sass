@@ -1,0 +1,37 @@
+@import "@/styles/sass/colors.sass"
+
+.svg-pi-wrapper
+  position: relative
+  display: inline-block
+
+.svg-pi
+  transform: rotate(-90deg) /* Fix the orientation */
+
+/* Animated spinner version */
+.svg-pi-indicator--spinner
+  transform-origin: center
+  animation: spinner .75s linear infinite
+
+.svg-pi-indicator
+  stroke: $color--emerald
+
+.svg-pi-track
+  stroke: var(--bg-tertiary, $lightest-grey-secondary)
+
+.svg-pi-label
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  text-align: center
+
+.svg-pi-label__progress
+  display: block
+
+/* Spinner animation */
+@keyframes spinner
+  0%
+    transform: rotate(0)
+  100%
+    transform: rotate(360deg)
+

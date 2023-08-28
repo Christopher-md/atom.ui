@@ -15,6 +15,7 @@ import Password from "@/components/UI/Password";
 import useToggle from "@/hooks/useToggle";
 import Typography from "@/components/UI/Typography";
 import Search from "@/components/UI/Search";
+import Progress from "@/components/Progress";
 import styles from "./App.module.sass";
 
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, expedita";
@@ -156,6 +157,7 @@ function App() {
                     onChange={onHandleCheck}
                 />
             </div>
+            <Progress progress={50} indicatorWidth={8} trackWidth={5} />
         </div>
     );
 }
