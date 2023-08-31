@@ -1,6 +1,9 @@
+@import "@/styles/sass/colors.sass";
+
 .skeleton {
   height: auto;
   display: block;
+  fill: var(--bg-tertiary, $lightest-grey-secondary);
   animation: 2s ease-in-out 0.5s infinite normal none running opacity;
 }
 

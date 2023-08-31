@@ -16,6 +16,7 @@ import useToggle from "@/hooks/useToggle";
 import Typography from "@/components/UI/Typography";
 import Search from "@/components/UI/Search";
 import Progress from "@/components/Progress";
+import Skeleton from "@/components/Skeleton";
 import styles from "./App.module.sass";
 
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, expedita";
@@ -158,6 +159,16 @@ function App() {
                 />
             </div>
             <Progress progress={50} indicatorWidth={8} trackWidth={5} />
+            <div className={styles.skeleton}>
+                <div className={styles["skeleton-header"]}>
+                    <Skeleton.Circle />
+                    <div className={styles["skeleton-header__info"]}>
+                        <Skeleton.Rectangle width={150} height={10} />
+                        <Skeleton.Rectangle width={100} height={10} />
+                    </div>
+                </div>
+                <Skeleton.Rectangle className={styles["skeleton-body"]} width="100%" height={100} />
+            </div>
         </div>
     );
 }
